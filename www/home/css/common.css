@@ -180,6 +180,17 @@ code {
 
 
 
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.padding{
+    padding: 30px 25px;
+}
+
+
+
 /* object_list */
 .wrap .input{
     padding: 5px 10px;
@@ -201,3 +212,16 @@ code {
     color: #333;
 }
 /* object_list end */
+
+
+/* header */
+.header{
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.header .h_logo_wrap p{
+    font-weight: 600;
+}
+/* header end */

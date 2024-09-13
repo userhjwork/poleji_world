@@ -8,7 +8,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $refresh_token = $data['refresh_token'];
 
 // DB 연결 및 refresh_token 유효성 확인 (예시)
-$sql = "SELECT * FROM tbl_tokens WHERE refresh_token = ? AND refresh_expiry > ?";
+$sql = "SELECT * FROM tbl_tokens WHERE refresh_token = ? AND refresh_expiry > ? AND is_valid = 1";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("si", $refresh_token, time());
@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     $refresh_expiry = time() + (7 * 24 * 60 * 60); // 7일 유효
 
     // DB에 새 access_token 및 새 refresh_token 저장
-    $stmt = $conn->prepare("UPDATE tbl_tokens SET access_token = ?, refresh_token = ?, access_expiry = ?, refresh_expiry = ? WHERE refresh_token = ?");
+    $stmt = $conn->prepare("UPDATE tbl_tokens SET access_token = ?, refresh_token = ?, access_expiry = ?, refresh_expiry = ? WHERE refresh_token = ? ");
     $stmt->bind_param("ssiis", $new_access_token, $new_refresh_token, $access_expiry, $refresh_expiry, $refresh_token);
     $stmt->execute();
 

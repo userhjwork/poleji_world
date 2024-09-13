@@ -8,7 +8,7 @@ $conn = connectToDB();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" minimum-scale=1.0 maximum-scale=1.0/>
-    <title>dashboard</title>
+    <title>관리자페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/css/normalize.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/css/common.css">
@@ -38,10 +38,16 @@ $conn = connectToDB();
             <div class="content">
                 <div class="padding">
                     <div class="content_title_wrap">
-                        <h2 class="title">대시보드</h2>
+                        <h2 class="title">관리자아아아</h2>
                     </div>
                     <div class="content_body">
-                        <p class="text">content area</p>
+                        <div class="ct_wrap">
+                            <div class="button_wrap">
+                                <button type="button" class="btn_basic stop_at">
+                                    <span class="text">토큰 무력화</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,10 +62,6 @@ $conn = connectToDB();
 
         $(document).on('click', '#h_logout', function(){
             logout('dashboard');
-        })
-
-        $(document).on('click', '#h_admin', function(){
-            location.href='./user_admin.php';
         })
     </script>
 </body>
