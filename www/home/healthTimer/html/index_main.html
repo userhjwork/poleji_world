@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>healthTimer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/healthTimer/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/healthTimer/assets/css/common.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/healthTimer/assets/css/main.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://poleji.cafe24.com/home/healthTimer/assets/js/script.js"></script>
+    
+
+    <style type="text/css">
+        #realTimeImage{
+            position: relative;
+        }
+        #secondHand_2 {
+            transform-origin: 50% 100%; /* 회전 중심점을 circle의 하단 중앙으로 설정 */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="wrap night">
+        <div class="flex_layout main">
+            <div class="flex_container w20 flex">
+                <div class="set_wrap">
+                    <div class="cnt_set">
+                        <span class="ipt_text">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex_container w80 flex">
+                <div class="timer_wrap">
+                    <button type="button" id="timer" class="ipt_text">00:00</button>
+                    <button id="start" class="no_text">시작</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info_wrap pop">
+            <div class="statue_wrap">
+                <span class="text"><strong class="count rest">0</strong>번째 휴식</span>
+                <span class="text"><strong class="count set">1</strong>번째 세트 진행중</span>
+            </div>
+        </div>
+        
+        <div class="option_wrap pop flex">
+            <button id="stop">중지</button>
+            <button id="reset">초기화</button>
+            <button id="setting" class="btn_icon setting" onclick="go_nav('setting')">
+                <span class="no_text icon">설정</span>
+            </button>
+        </div>
+        
+        
+    </div>
+
+    
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID&submodules=geocoder"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var timer;
+    
+    var minutes = 0;
+    var seconds = 0;
+
+    var count_set = 0;
+
+    var first_str = $("#timer").text();
+    var first_arr = first_str.split(':');
+    var min_str = first_arr[0];
+    var sec_str = first_arr[1];
+
+    minutes = Number(min_str);
+    seconds = Number(sec_str);
+
+    var isRunning = false; // 타이머 실행 상태를 추적하는 변수
+
+    function formatTime(mins, secs) {
+        // console.log(`mis: ${mins}, secs: ${secs}`)
+        return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function startTimer() {
+        minutes = 0;
+        seconds = 0;
+
+        count_set++;
+        $(".cnt_set .ipt_text").text(count_set);
+
+        $("#timer").attr('class', 'ipt_text');
+
+        if (!isRunning) {
+
+
+            timer = setInterval(function(){
+                seconds++;
+                if (seconds === 60) {
+                    minutes++;
+                    seconds = 0;
+                }
+
+                if (seconds === 10 && minutes === 0) {
+                    $("#timer").addClass('blue');
+                }
+                if (seconds === 20 && minutes === 0) {
+                    $("#timer").addClass('green');
+                }
+                if (seconds === 30 && minutes === 0) {
+                    $("#timer").addClass('yellow');
+                }
+                if (seconds === 40 && minutes === 0) {
+                    $("#timer").addClass('orange');
+                }
+                if (seconds === 40 && minutes === 0) {
+                    $("#timer").addClass('red');
+                }
+
+
+                $('#timer').text(formatTime(minutes, seconds));
+            }, 1000);
+            isRunning = true;
+        }
+    }
+
+
+    function endTimer() {
+        clearInterval(timer);
+        isRunning = false; // 타이머가 중지됨을 표시
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        minutes = 0;
+        seconds = 0;
+        $('#timer').text(formatTime(minutes, seconds));
+        isRunning = false; // 타이머가 중지됨을 표시
+
+    }
+
+    $('#start').click(function(){
+        startTimer();
+        
+    });
+
+    $('#stop').click(function(){
+        endTimer();
+    });
+
+    $('#reset').click(function(){
+        resetTimer();
+    });
+});
+
+function go_nav(loca) {
+    location.href = './index_'+loca+'.html';
+}
+
+window.onbeforeunload = function () {
+	return alert('나가?'); 
+}
+
+</script>
+
+
+</body>
+</html>

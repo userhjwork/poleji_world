@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>로그인</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/todo_maps/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/todo_maps/assets/css/common.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="https://poleji.cafe24.com/home/js/login.js"></script>
+    <script src="https://poleji.cafe24.com/home/todo_maps/assets/js/script.js"></script>
+
+    <style type="text/css">
+        html,
+        html *{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+  
+
+    <ul>
+        <li onclick="kakaoLogin();">
+          <a href="javascript:void(0)">
+              <span>카카오 로그인</span>
+          </a>
+        </li>
+        <li onclick="kakaoLogout();">
+          <a href="javascript:void(0)">
+              <span>카카오 로그아웃</span>
+          </a>
+        </li>
+    </ul>
+
+    
+    <script>
+        
+        Kakao.init('d41148939f2801ea4222671ee2b5191e'); //발급받은 키 중 javascript키를 사용해준다.
+        console.log(Kakao.isInitialized()); // sdk초기화여부판단
+        
+        </script>
+
+        <script>
+            $(document).ready(function(){
+                kakaoLogin();
+            })
+        </script>
+  
+</body>
+</html>

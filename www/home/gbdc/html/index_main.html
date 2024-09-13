@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>gbdc 메인페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/gbdc/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/gbdc/assets/css/common.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/gbdc/assets/css/main.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://poleji.cafe24.com/home/gbdc/assets/js/script.js"></script>
+    
+
+    <style type="text/css">
+        
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header id="header">
+            <div class="header flex">
+                <div id="logo">
+                    <span class="text no_text">경상북도개발공사</span>
+                </div>
+                <div class="user_info">
+                    <span class="user_nm">유지보수(박종혁)</span>
+                    <span class="user_state online">접속</span> <!-- online 클래스 있을 시 컬러 표시 -->
+                    <span class="login_tm">2023.12.11 11:55:12</span>
+                </div>
+                <div class="search_wrap flex">
+                    <select name="" id="" class="search_tpye">
+                        <option value="all">통합검색</option>
+                        <option value="all">제목</option>
+                        <option value="all">작성자</option>
+                    </select>
+                    <div class="input_wrap">
+                        <input type="search" name="" id="">
+                    </div>
+                </div>
+                <div class="sns_wrap flex">
+                    <a href="https://www.youtube.com/channel/UCtVc4l6WXjIaZ_uwp2DGnxg/featured" class="sns youtube no_text">경상북도개발공사 유투브채널로 이동하기</a>
+                    <a href="http://blog.naver.com/gbdc04" class="sns naver no_text">경상북도개발공사 네이버블로그로 이동하기</a>
+                    <a href="https://www.instagram.com/accounts/login/?next=/gbdc_hauri/" class="sns instargram no_text">경상북도개발공사 인스타그램으로 이동하기</a>
+                    <a href="https://www.facebook.com/gbdcstory/" class="sns facebook no_text">경상북도개발공사 페이스북 페이지로 이동하기</a>
+                    <a href="https://www.tiktok.com/@gbdc_tiktok?lang=ko-KR" class="sns tiktok no_text">경상북도개발공사 틱톡계정으로 이동하기</a>
+                </div>
+                <div class="option_wrap">
+                    <ul class="option_list flex">
+                        <li>
+                            <button type="button" class="btn_chart">
+                                <span class="text">미션및비전</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn_sms">
+                                <span class="text">메신저</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn_chat">
+                                <span class="text">sms</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn_home">
+                                <span class="text">홈페이지</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn_setting">
+                                <span class="text">개인설정</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn_logout">
+                                <span class="text">로그아웃</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+			<div class="container_gnb">
+				<div class="gnb_wrap">
+					<ul class="gnb main_menu flex">
+						<li>
+							<a href="">결재</a>
+						</li>
+						<li>
+							<a href="">문서함</a>
+						</li>
+						<li>
+							<a href="">기록관</a>
+						</li>
+						<li>
+							<a href="">커뮤니티</a>
+							<ul class="gnb sub_menu">
+								<li>
+									<a href="">게시판</a>
+								</li>
+								<li>
+									<a href="">동호회</a>
+								</li>
+								<li>
+									<a href="">스퀘어</a>
+								</li>
+								<li>
+									<a href="">일정</a>
+								</li>
+								<li>
+									<a href="">설비예약</a>
+								</li>
+								<li>
+									<a href="">웹폴더</a>
+								</li>
+								<li>
+									<a href="">설문</a>
+								</li>
+								<li>
+									<a href="">주소록</a>
+								</li>
+								<li>
+									<a href="">조직도</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="">통합업무</a>
+						</li>
+						<li>
+							<a href="">경영현황</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </header>
+        <div id="body">
+            <div class="body_wrap">
+                <!-- 상단 알림 라인 -->
+                <div class="alert_notice split_wrap">
+                    <div class="box_wrap split_left">
+						<!-- 추가 -->
+						<div class="swiper top_notice_wrap">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="" class="text_wrap">
+										<p class="text textCut">[알림] 부서이동등으로 인한 업무변경 시 <span class="blue">"정보시스템 사용권한 요청서"</span>를 작성하여 <span class="border">새로운 업무권한을 부여</span> 받으시기 바랍니다.</p>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="" class="text_wrap">
+										<p class="text textCut">[알림] 업무변경 시 <span class="blue">"정보시스템 사용권한 요청서"</span>를 작성하여 <span class="border">새로운 업무권한을 부여</span> 받으시기 바랍니다.</p>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="" class="text_wrap">
+										<p class="text textCut">[알림] 부서 등으로 인한 업무변경 시 <span class="blue">"정보시스템 사용권한 요청서"</span>를 작성하여 <span class="border">새로운 업무권한을 부여</span> 받으시기 바랍니다.</p>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- 추가 end -->
+                        <div class="mail_wrap flex">
+                            <a href="" class="in_mail key_val">
+                                <span class="title">내부메일</span>
+                                <span class="count">10</span>
+							</a>
+                            <a href="" class="out_mail key_val">
+                                <span class="title">외부메일</span>
+                                <span class="count">10</span>
+							</a>
+                        </div>
+                    </div>
+                    <div class="box_wrap split_right">
+                        <a href="" class="in_mail key_val">
+                            <span class="title">받은코인</span>
+                            <span class="count">0</span>
+						</a>
+                        <a href="" class="out_mail key_val">
+                            <span class="title">남은코인</span>
+                            <span class="count">0</span>
+						</a>
+                    </div>
+                </div>
+                <!-- 상단 알림 end -->
+                
+                <!-- cetegory state -->
+                <div class="category_state split_wrap">
+					<!-- 2024.02.19 -->
+                    <div class="container flex">
+                        <div class="category_card edsm">
+                            <div class="title_wrap">
+                                <h3 class="title">전자결재</h3>
+                            </div>
+							<div class="content_wrap">
+								<ul class="con_list">
+									<li>
+										<a href="" class="title">결재</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">반려</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">공람</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">접수</a>
+										<span class="value">0건</span>
+									</li>
+								</ul>
+							</div>
+                        </div>
+                        <div class="category_card approval">
+                            <div class="title_wrap">
+                                <h3 class="title">내부결제</h3>
+                            </div>
+							<div class="content_wrap flex">
+								<ul class="con_list">
+									<li>
+										<a href="" class="title">민원처리</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">지출결재</a>
+										<span class="value">-</span>
+									</li>
+									<li>
+										<a href="" class="title">내부결재(지출)</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">내부결재(수입)</a>
+										<span class="value">0건</span>
+									</li>
+								</ul>
+								<ul class="con_list work">
+									<li>
+										<a href="" class="title">시간외근무</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">근무상황부</a>
+										<span class="value">0건</span>
+									</li>
+									<li>
+										<a href="" class="title">출장신청</a>
+										<span class="value">0건</span>
+									</li>
+								</ul>
+							</div>
+                        </div>
+                        <div class="category_card atdc"> 
+                            <div class="title_wrap">
+                                <h3 class="title">근태현황</h3>
+                            </div>
+							<div class="content_wrap">
+								<ul class="con_list">
+									<li>
+										<a href="" class="title">시간외근무</a>
+										<span class="value">-</span>
+									</li>
+									<li>
+										<a href="" class="title">연차</a>
+										<span class="value">-</span>
+									</li>
+									<li>
+										<a href="" class="title">장기재직</a>
+										<span class="value">-</span>
+									</li>
+									<li>
+										<a href="" class="title">보상</a>
+										<span class="value">-</span>
+									</li>
+								</ul>
+							</div>
+                        </div>
+                        <div class="category_card controller">
+                            <div class="title_wrap">
+                                <h3 class="title">경영현황</h3>
+                            </div>
+							<div class="content_wrap">
+								<ul class="con_list">
+									<li>
+										<a href="" class="title">매출액</a>
+										<span class="value">
+											<span class="state good no_text">좋음</span>
+										</span>
+									</li>
+									<li>
+										<a href="" class="title">건설사고</a>
+										<span class="value">
+											<span class="state cmn no_text">보통</span>
+										</span>
+									</li>
+									<li>
+										<a href="" class="title">신규사업</a>
+										<span class="value">
+											<span class="state cmn no_text">보통</span>
+										</span>
+									</li>
+									<li>
+										<a href="" class="title">주택건설</a>
+										<span class="value">
+											<span class="state cmn no_text">보통</span>
+										</span>
+									</li>
+									<li>
+										<a href="" class="title">분양/공급</a>
+										<span class="value">
+											<span class="state bad no_text">나쁨</span>
+										</span>
+									</li>
+								</ul>
+							</div>
+                        </div> 
+                        <div class="category_card bs">
+                            <div class="title_wrap flex">
+                                <h3 class="title">3Q 재무제표(23)</h3>
+								<button type="button" class="to_excel no_text">엑셀</button>
+                            </div>
+							<div class="content_wrap">
+								<ul class="con_list">
+									<li>
+										<a href="" class="title">자산</a>
+										<span class="value">1,262,862</span>
+									</li>
+									<li>
+										<a href="" class="title">부채</a>
+										<span class="value">398,067</span>
+									</li>
+									<li>
+										<a href="" class="title">자본</a>
+										<span class="value">864,795</span>
+									</li>
+									<li>
+										<a href="" class="title">매출액</a>
+										<span class="value">115,729</span>
+									</li>
+									<li>
+										<a href="" class="title">당기순이익</a>
+										<span class="value">20,040</span>
+									</li>
+								</ul>
+							</div>
+                        </div>     
+						<div class="category_card tm">
+							<div class="title_wrap">
+								<h3 class="title">오늘의 식단</h3>
+							</div>
+							<div class="content_wrap">
+								<ul class="con_list">
+									<li>
+										<span class="title">백미밥</span>
+									</li>
+									<li>
+										<span class="title">공나물무침</span>
+									</li>
+									<li>
+										<span class="title">버섯불고기조림</span>
+									</li>
+									<li>
+										<span class="title">삼립호빵</span>
+									</li>
+									<li>
+										<span class="title">쇠고기무국</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="category_card sth">
+							<div class="title_wrap">
+								<h3 class="title">오늘의 식단</h3>
+							</div>
+							<div class="content_wrap">
+								<ul class="con_list">
+									<li>
+										<span class="title">백미밥</span>
+									</li>
+									<li>
+										<span class="title">공나물무침</span>
+									</li>
+									<li>
+										<span class="title">버섯불고기조림</span>
+									</li>
+									<li>
+										<span class="title">삼립호빵</span>
+									</li>
+									<li>
+										<span class="title">쇠고기무국</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+                    </div>
+					<!-- 2024.02.19 end -->
+                </div>
+                <!-- cetegory state end -->
+
+                <!-- main_section -->
+                <div class="content main_section split_wrap">
+                    <div class="main_notice split_left">
+						<div class="notice_wrap flex">
+							<div class="split_left_l">
+								<div class="box_wrap b_t">
+									<div class="category_wrap">
+										<div class="category_menu">
+											<ul class="menu_list">
+												<li>
+													<button type="button" class="btn_ctgry_menu select">최근게시물</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">공지사항</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">업무계획</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">업무지식</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">청렴마당</button>
+												</li>
+											</ul>
+										</div>
+										<div class="category_con">
+											<ul class="title_list">
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">[복무]근무상황카드 증빙서루 제출 시스템 개선 안내</p>
+														</a>
+													</div>
+													<span class="writer strong">강소현</span>
+													<span class="date">2023.12.25</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">22일 연탄 배달 봉사활동 안내</p>
+														</a>
+													</div>
+													<span class="writer strong">이형근</span>
+													<span class="date">2023.12.22</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">★ 2023년도 시간외근무 조기 마감 아내 및 사전결재(12/22 16:00)</p>
+														</a>
+													</div>
+													<span class="writer strong">장미선</span>
+													<span class="date">2023.12.21</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">2023 GBDC 건설안전대상 시상식 및 공사감독자 안전교육 안내</p>
+														</a>
+													</div>
+													<span class="writer strong">이상진</span>
+													<span class="date">2023.12.20</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">★★ 혁신교육 만족도 조사 참여 안내(단 1분 소요) ★★</p>
+														</a>
+													</div>
+													<span class="writer strong">김한나</span>
+													<span class="date">2023.12.20</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">업무용 수소차량 충전안내</p>
+														</a>
+													</div>
+													<span class="writer strong">고영만</span>
+													<span class="date">2023.12.20</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">2023년도 12월 2차 급여 지급시간 안내</p>
+														</a>
+													</div>
+													<span class="writer strong">장미선</span>
+													<span class="date">2023.12.20</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">현대자동차 안동지점 이동정비서비스 안내(12/21 목)</p>
+														</a>
+													</div>
+													<span class="writer strong">고영만</span>
+													<span class="date">2023.12.19</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">★위여운 하우리 캘린더(2024년 탁상형 달력) 받아가세요 ★</p>
+														</a>
+													</div>
+													<span class="writer strong">우영하</span>
+													<span class="date">2023.12.19</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">[복무]병가 관련 안내사항</p>
+														</a>
+													</div>
+													<span class="writer strong">강소현</span>
+													<span class="date">2023.12.18</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="split_left_r">
+								<!-- 2024.02.19 -->
+								<div class="box_wrap b_t headers flex">
+									<div class="guv ceo run">
+										<button class="go_report">보고</button>
+										<span class="title">사장</span>
+										<span class="state">(재실)</span>
+									</div>
+									<div class="guv ed">
+										<span class="title">전무이사</span>
+										<span class="state">(재실)</span>
+									</div>
+								</div>
+								<!-- 2024.02.19 end -->
+								<div class="box_wrap b_t favorites">
+									<div class="favorites_wrap">
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu1">시간외근무</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu2">출장신청</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu3">근무상황카드</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu4">지출결의서</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu5">이달의당직</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu6">복지포인트</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu7">배차신청</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu8">차량일지등록</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu9">도서대출</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu10">강당사용</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu11">교육신청</a>
+										</div>
+										<div class="menu_wrap">
+											<a href="" class="go_fav menu12">주간업무일정</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="service_wrap flex">
+							<div class="split_left_l flex">
+								<!-- 2024.02.19 -->
+								<div class="today_food">
+									<div class="title_wrap">
+										<button type="button" class="title">오늘의 식단</button>
+									</div>
+									<div class="content_wrap">
+										<ul class="con_list">
+											<li>
+												<span class="title">백미밥</span>
+											</li>
+											<li>
+												<span class="title">공나물무침</span>
+											</li>
+											<li>
+												<span class="title">버섯불고기조림</span>
+											</li>
+											<li>
+												<span class="title">삼립호빵</span>
+											</li>
+											<li>
+												<span class="title">쇠고기무국</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- 2024.02.19 end -->
+								<div class="button_wrap flex">
+									<!-- <button type="button" class="btn_quick food">
+										<span class="text">식단표</span>
+									</button> -->
+									<button type="button" class="btn_quick book">
+										<span class="text">규정집</span>
+									</button>
+									<button type="button" class="btn_quick card">
+										<span class="text">법인카드사전등록</span>
+									</button>
+									<button type="button" class="btn_quick food">
+										<span class="text">저녁먹을래요</span>
+									</button>
+									<button type="button" class="btn_quick tool">
+										<span class="text">신기술신공법</span>
+									</button>
+									<button type="button" class="btn_quick note">
+										<span class="text">고충처리</span>
+									</button>
+									<button type="button" class="btn_quick person">
+										<span class="text">개인정보처리방침</span>
+									</button>
+								</div>
+							</div>
+							<div class="split_left_r">
+								<div class="box_wrap banner">
+									<div class="swiper banner_wrap">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide">
+												<a href="" class="img_wrap objectFit">
+													<img src="../assets/img/ceomessage.png" alt="">
+												</a>
+											</div>
+											<div class="swiper-slide">
+												<a href="" class="img_wrap objectFit">
+													<img src="../assets/img/login-img.png" alt="">
+												</a>
+											</div>
+											<div class="swiper-slide">
+												<a href="" class="img_wrap objectFit">
+													<img src="../assets/img/logo_gbdc.png" alt="">
+												</a>
+											</div>
+										</div>
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="calendar_wrap split_right">
+						<div class="box_wrap calendar">
+							<div class="r_menu_title flex">
+								<h3 class="title">일정체크</h3>
+								<div class="button_wrap">
+									<button type="button" class="all_sch">+ 전체보기</button>
+									<button type="button" class="add_sch">+ 등록</button>
+								</div>
+							</div>
+							<!-- 달력 api로 변경 -->
+							<div id="calendar">
+							</div>
+							<!-- 2024.02.19 -->
+							<div class="sch_wrap">
+								<div class="sch_ctgry">
+									<ul class="ctgry_list flex">
+										<li>
+											<button type="button" class="sch_ctgry">메뉴</button>
+										</li>
+										<li>
+											<button type="button" class="sch_ctgry active">메뉴</button>
+										</li>
+										<li>
+											<button type="button" class="sch_ctgry">메뉴</button>
+										</li>
+									</ul>
+								</div>
+								<ul class="sch_body sch_list">
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+
+
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+									<li>
+										<span class="time">13:00~18:00</span>
+										<a href="" class="textCut">영주 첨단베어링 산업단지</a>
+									</li>
+								</ul>
+							</div>
+							<!-- 2024.02.19 end -->
+						</div>
+					</div>
+                </div>
+                <!-- main_section end -->
+
+                <!-- sub_section -->
+                <div class="content sub_section split_wrap">
+					<div class="sub_notice split_left">
+						
+						<div class="develope flex">
+							<div class="split_left_l">
+								<div class="box_wrap b_t">
+									<div class="category_wrap">
+										<div class="category_menu">
+											<ul class="menu_list">
+												<li>
+													<button type="button" class="btn_ctgry_menu select">전산공지</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">전산관련문서</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">소프트웨어</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">메뉴얼</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">FAQ 게시판</button>
+												</li>
+											</ul>
+										</div>
+										<div class="category_con">
+											<ul class="title_list">
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/22) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="writer strong">유지보수 김용민</span>
+													<span class="date">2023.12.25</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/21) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="writer strong">유지보수 김용민</span>
+													<span class="date">2023.12.22</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">12월 보안점검의 날입니다. 내PC지키미(GPI)와 Privacy-i실행으로 개인PC보호에 힘써주세요</p>
+														</a>
+													</div>
+													<span class="writer strong">조준우</span>
+													<span class="date">2023.12.21</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="writer strong">유지보수 김용민</span>
+													<span class="date">2023.12.20</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="split_left_r">
+								<div class="box_wrap b_t">
+									<div class="category_wrap">
+										<div class="category_menu">
+											<ul class="menu_list">
+												<li>
+													<button type="button" class="btn_ctgry_menu select">SR 처리요청</button>
+												</li>
+											</ul>
+										</div>
+										<div class="category_con">
+											<ul class="title_list">
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/22) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="status strong">!미승인</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/21) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="status strong">!미승인</span>
+												</li>
+												<li> 
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">12월 보안점검의 날입니다. 내PC지키미(GPI)와 Privacy-i실행으로 개인PC보호에 힘써주세요</p>
+														</a>
+													</div>
+													<span class="status strong">승인</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="status strong">!미승인</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="bid flex">
+							<div class="split_left_l">
+								<div class="box_wrap b_t">
+									<div class="category_wrap">
+										<div class="category_menu">
+											<ul class="menu_list">
+												<li>
+													<button type="button" class="btn_ctgry_menu select">입찰</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">분양</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">채용</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">공지</button>
+												</li>
+											</ul>
+										</div>
+										<div class="category_con">
+                                            <ul class="title_list">
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/22) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="date">2023.12.25</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/21) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="date">2023.12.22</span>
+												</li>
+												<li> 
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">12월 보안점검의 날입니다. 내PC지키미(GPI)와 Privacy-i실행으로  개인PC보호에 힘써주세요</p>
+														</a>
+													</div>
+													<span class="date">2023.12.21</span>
+												</li>
+												<li>
+													<div class="title_wrap">
+														<a href="">
+															<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+														</a>
+													</div>
+													<span class="date">2023.12.20</span>
+												</li>
+											</ul>
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<div class="split_left_r">
+								<div class="box_wrap b_t double">
+									<div class="category_wrap">
+										<div class="category_menu">
+											<ul class="menu_list">
+												<li>
+													<button type="button" class="btn_ctgry_menu main_sub">CEO공감</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu">CEO메시지</button>
+												</li>
+												<li>
+													<button type="button" class="btn_ctgry_menu select">노조소통</button>
+												</li>
+											</ul>
+										</div>
+										<div class="category_con double_list">
+											<div class="list_wrap">
+												<!-- 고정리스트 -->
+												<ul class="title_list main"> 
+													<li>
+														<div class="title_wrap">
+															<a href="">
+																<p class="textCut">CEO 우체통</p>
+															</a>
+														</div>
+														<span class="new">신규</span>
+														<span class="count">0건</span>
+													</li>
+													<li>
+														<div class="title_wrap">
+															<a href="">
+																<p class="textCut">소통광장</p>
+															</a>
+														</div>
+														<span class="new">등록</span>
+														<span class="count">17건</span>
+													</li>
+												</ul>
+												<!-- 상세 리스트(스크롤) -->
+												<!-- 수정 >  div.main 뒤에 div.sub가 올 경우 크기 축소  -->
+
+												<ul class="title_list sub check_main"> 
+													<li>
+														<div class="title_wrap">
+															<a href="">
+	
+																<p class="textCut">통합업무 긴급반영(금일(12/22) 12:10~12:20)으로 인한 접속제한</p>
+															</a>
+														</div>
+														<span class="agree">동의</span>
+														<span class="agree_count">5건</span>
+													</li>
+													<li>
+														<div class="title_wrap">
+															<a href="">
+																<p class="textCut">통합업무 긴급반영(금일(12/21) 12:10~12:20)으로 인한 접속제한</p>
+															</a>
+														</div>
+														<span class="agree">동의</span>
+														<span class="agree_count">25건</span>
+													</li>
+													<li> 
+														<div class="title_wrap">
+															<a href="">
+																<p class="textCut">12월 보안점검의 날입니다. 내PC지키미(GPI)와 Privacy-i실행으로  개인PC보호에 힘써주세요</p>
+															</a>
+														</div>
+														<span class="agree">동의</span>
+														<span class="agree_count">21건</span>
+													</li>
+													<li>
+														<div class="title_wrap">
+															<a href="">
+																<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+															</a>
+														</div>
+														<span class="agree">동의</span>
+														<span class="agree_count">20건</span>
+													</li>
+												</ul>
+											</div>
+                                        </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="holidays split_right">
+						<div class="box_wrap b_t">
+							
+							<div class="category_wrap">
+								<div class="r_menu_title">
+									<h3 class="title">휴가/부재자</h3>
+								</div>
+								<div class="category_con">
+									<ul class="title_list">
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/22) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">보상휴가</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/21) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+										<li> 
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">12월 보안점검의 날입니다. 내PC지키미(GPI)와 Privacy-i실행으로 개인PC보호에 힘써주세요</p>
+												</a>
+											</div>
+											<span class="status">승인</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span> 
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">특별휴가 추가적립</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">특별휴가 추가적립</span>
+										</li><li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">특별휴가 추가적립</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+										<li>
+											<div class="title_wrap">
+												<a href="">
+													<p class="textCut">통합업무 긴급반영(금일(12/14) 12:10~12:20)으로 인한 접속제한</p>
+												</a>
+											</div>
+											<span class="textCut reason">연차휴가</span>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+                <!-- sub_section end -->
+                
+            </div>
+        </div>
+        <footer id="footer">
+			<div class="footer_wrap flex">
+				<div class="gbdc_info">
+					<p class="address">(우)36849 경상북도 예천군 효명면 행복로 35</p>
+					<div class="content flex">
+						<span class="tel">Tel.054-650-3000</span>
+						<span class="fax">Fax.054-650-3006</span>
+					</div>
+				</div>
+				<div class="link_wrap flex">
+					<select name="" id="">
+						<option value="">공공구매</option>
+						<option value=""></option>
+						<option value=""></option>
+					</select>
+					<select name="" id="">
+						<option value="">자율점검체크</option>
+						<option value=""></option>
+						<option value=""></option>
+					</select>
+					<select name="" id="">
+						<option value="">업무관련</option>
+						<option value=""></option>
+						<option value=""></option>
+					</select>
+						
+					<select id="u_list" name="" title="전국 지방 개발공사 홈페이지 바로가기">
+						<option value="">전국 도시개발공사</option>
+						<option title="새 창으로 열림" value="http://www.i-sh.co.kr">SH공사</option>
+						<option title="새 창으로 열림" value="https://www.gh.or.kr ">경기도시공사</option>
+						<option title="새 창으로 열림" value="http://www.bmc.busan.kr">부산도시공사</option>
+						<option title="새 창으로 열림" value="http://www.gmcc.co.kr ">광주광역시도시공사</option>
+						<option title="새 창으로 열림" value="http://www.dcco.kr">대전도시공사</option>
+						<option title="새 창으로 열림" value="http://www.cbdc.co.kr">충북개발공사</option>
+						<option title="새 창으로 열림" value="https://www.ih.co.kr/">인천도시공사</option>
+						<option title="새 창으로 열림" value="http://www.gdco.co.kr ">강원도개발공사</option>
+						<option title="새 창으로 열림" value="http://www.jbdc.co.kr">전북개발공사</option>
+						<option title="새 창으로 열림" value="http://www.gndc.co.kr">경남개발공사</option>
+						<option title="새 창으로 열림" value="http://www.jndc.co.kr">전남개발공사</option>
+						<option title="새 창으로 열림" value="http://www.cndc.kr">충남개발공사</option>
+						<option title="새 창으로 열림" value="http://www.umca.co.kr">울산도시공사</option>
+						<option title="새 창으로 열림" value="http://www.jpdc.co.kr">제주특별자치도개발공사</option>
+						<option title="새 창으로 열림" value="https://www.dudc.or.kr">대구도시공사</option>
+					</select>
+
+					<select id="u_list2" name="" title="경상북도 유관기관 홈페이지 바로가기">
+						<option value="">경상북도 유관기관</option>
+						<option title="새 창으로 열림" value="http://www.gb.go.kr">경상북도청</option>
+						<option title="새 창으로 열림" value="http://council.gb.go.kr">경상북도의회</option>
+						<option title="새 창으로 열림" value="http://www.gbe.kr">경상북도교육청</option>
+						<option title="새 창으로 열림" value="http://www.gbpolice.go.kr">경북도지방경찰청</option>
+						<option title="새 창으로 열림" value="http://www.gbtp.or.kr">경북테크노파크</option>
+						<option title="새 창으로 열림" value="http://www.gib.re.kr">경북바이오산업연구원</option>
+						<option title="새 창으로 열림" value="http://www.gbyc.co.kr">경상북도청소년수련원</option>
+						<option title="새 창으로 열림" value="http://www.gbsinbo.co.kr ">경북신용보증재단</option>
+						<option title="새 창으로 열림" value="http://www.gcmc.or.kr">김천의료원</option>
+						<option title="새 창으로 열림" value="http://www.dgi.re.kr">대구경북연구원</option>
+						<option title="새 창으로 열림" value="http://www.gpc.ac.kr">경북도립대학교</option>
+					</select>
+				</div>
+			</div>
+		</footer>
+    </div>
+	<!--dateformat 바꿀 때 필요한 자바스크립트 라이브러리-->
+	<script class="cssdesk" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js" type="text/javascript"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<script>
+		var array_event = [
+			{
+				title  : 'event1',
+				start  : '2024-02-01T10:30:00',
+				id     : 'HOLIDAY',
+			},
+			{
+				title  : 'event2',
+				start  : '2024-02-05T11:12:00',
+				end    : '2024-02-07T12:30:00',
+			},
+			{
+				title  : 'event2_1',
+				
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+				id     : 'HOLIDAY',
+			},
+			{
+				title  : 'event2_1',
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+				id: 'NEW01',
+			},
+			{
+				title  : 'event2_1',
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+			},
+			{
+				title  : 'event2_1',
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+			},
+			{
+				title  : 'event2_1',
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+			},
+			{
+				title  : 'event2_1',
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+			},
+			{
+				title  : '특별한 이벤트',
+				id : 'CONFERENCE',
+				start  : '2024-02-05T13:12:00',
+				end    : '2024-02-07T15:20:00',
+			},
+			{
+				title  : '특별한 이벤트',
+				start  : '2024-02-09T12:30:00',
+				allDay : false, // will make the time show
+				id : 'CONFERENCE',
+			},
+			{
+				title  : 'event4',
+				start  : '2024-02-19T12:30:00',
+				allDay : false, // will make the time show
+				id : 'CONFERENCE',
+			},
+			{
+				title  : 'event4',
+				start  : '2026-01-19T12:30:00',
+				allDay : false // will make the time show
+			}
+		]
+		
+
+		// 추가
+		var top_notice = new Swiper(".top_notice_wrap", {
+			direction: "vertical",
+			allowTouchMove: false,
+			autoHeight: true,
+			autoplay: {
+
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+			loop: true,
+		});
+
+		var banner = new Swiper(".banner_wrap", {
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true,
+			},
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+			loop: true,
+		});
+
+		// 추가
+		$(document).ready(function(){
+
+			// 달력
+			var calendarEl = $('#calendar');
+
+			var calendar = new FullCalendar.Calendar(calendarEl[0], {
+				initialView: 'dayGridMonth',
+				// views: {
+				// 	dayGridMonth: {
+
+				// 		titleFormat: { year: 'numeric', month: '2-digit' },
+				// 	}
+				// },
+
+				titleFormat: { // will produce something like "Tuesday, September 18, 2018"
+					month: 'numeric',
+					year: 'numeric',
+					
+				},
+				headerToolbar: {
+					left: 'title',
+					right: 'prevYear,prev,next,nextYear',
+				},
+				// navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+				dayHeaderContent: function (arg) {
+					// 요일 이름을 사용자가 원하는 대로 설정
+					var days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+					return days[arg.date.getDay()];
+				},
+				editable: false, // 수정 가능
+				nowIndicator: true, // 현재 시간 마크
+				dayMaxEvents: false, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+				// locale: 'ko', // 한국어 설정
+				
+				events: array_event,
+				dateClick: function(info) {
+					console.log(info);
+				},
+				
+				datesSet: function(info) {
+					console.log('새로 설정된 날짜 범위:', info.start, 'to', info.end);
+				},
+				eventContent: function(arg) {
+
+					
+					console.log('arg');
+					console.log(arg.event.id);
+					// 각 이벤트에 다른 클래스 추가
+					let classNames = 'event_child';
+				
+					// 이벤트에 따라 다른 클래스를 추가하려면 조건문을 사용할 수 있습니다.
+					if (arg.event.id === 'holyday') {
+					  classNames += ' txt_red';
+					//   console.log(classNames);
+					}
+				
+					return {
+					  html: '<div class="' + classNames + '">' + arg.event.title + '</div>',
+					};
+
+
+					
+				},
+
+				// eventContent: function(arg) {
+				// 		// 각 이벤트에 다른 클래스 추가
+				// 	let classNames = 'event_child';
+					
+				// 	// 이벤트에 따라 다른 클래스를 추가하려면 조건문을 사용할 수 있습니다.
+				// 	if (arg.event.id === 'HOLIDAY') {
+				// 		classNames += ' txt_red';
+				// 	}else if (arg.event.id === 'CONFERENCE') {
+				// 		classNames += ' txt_bold';
+				// 	}else if (arg.event.id === 'NEW01') {
+				// 		classNames += ' txt_bold';
+				// 	}else if (arg.event.id === 'NEW02') {
+				// 		classNames += ' txt_bold';
+				// 	}
+					
+				// 	return {
+				// 	html: '<div class="' + classNames + '"></div>',
+				// 	};
+				// },
+				eventDidMount: function (info) {
+					// 이벤트가 렌더링된 후에 호출되는 콜백
+					
+					var eventDate = moment(info.event.start).format('YYYY-MM-DD');
+					var dayCell = $('[data-date="' + eventDate + '"]');
+
+					var event_id = info.event.id;
+
+					if (dayCell.length > 0) {
+
+						switch (event_id) {
+							case 'HOLIDAY':
+								dayCell.addClass('txt_red');
+								break;
+							case 'CONFERENCE':
+							dayCell.addClass('txt_bold');
+								break;
+							case 'NEW01':
+							dayCell.addClass('txt_bold');
+								break;
+							case 'NEW02':
+							dayCell.addClass('txt_bold');
+								break;
+						
+							default:
+								break;
+						}
+					}
+
+				}
+			})
+			calendar.render();
+			// 달력 end
+		});
+		
+	
+		
+		
+		</script>
+</body>
+</html>

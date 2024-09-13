@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <title>nonamed_map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/nonamed/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/nonamed/assets/css/common.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/nonamed/assets/css/main.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://poleji.cafe24.com/home/nonamed/assets/js/script.js"></script>
+    
+
+    <style type="text/css">
+        
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- <button id="to-dokdo">독도로가</button> -->
+
+        <!-- <div class="main_wrap"> -->
+
+            <!-- 매우좋음 -->
+            <!-- <div class="fixed_icon" id="oms_1">
+                <div class="icon_wrap">
+                    <button type="button" class="icon perfect">
+                        <span class="icon_text">매우좋음</span>
+                    </button>
+                    <div class="pstn_info_wrap">
+                        <div class="pstn_info">
+                            <h5 class="title">OMS #1</h5>
+                            <ul class="pstn_list">
+                                <li>
+                                    <span class="title">복합악취</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value strong">3</span>
+                                        <span class="con_unit">배수</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">메틸머캅탄</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0000</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">황화수소</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0016</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">암모니아</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0078</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="stinking_time">
+                            <span class="text">복합악취 시간초과</span>
+                            <span class="icon no_text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 좋음 -->
+            <!-- <div class="fixed_icon" id="oms_2">
+                <div class="icon_wrap">
+                    <button type="button" class="icon good">
+                        <span class="icon_text">좋음</span>
+                    </button>
+                    <div class="pstn_info_wrap">
+                        <div class="pstn_info">
+                            <h5 class="title">OMS #2</h5>
+                            <ul class="pstn_list">
+                                <li>
+                                    <span class="title">복합악취</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value strong">3</span>
+                                        <span class="con_unit">배수</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">메틸머캅탄</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0000</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">황화수소</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0016</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">암모니아</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0078</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="stinking_time">
+                            <span class="text">복합악취 시간초과</span>
+                            <span class="icon no_text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 보통 -->
+            <!-- <div class="fixed_icon" id="oms_3">
+                <div class="icon_wrap">
+                    <button type="button" class="icon soso">
+                        <span class="icon_text">보통</span>
+                    </button>
+                    <div class="pstn_info_wrap">
+                        <div class="pstn_info">
+                            <h5 class="title">OMS #3</h5>
+                            <ul class="pstn_list">
+                                <li>
+                                    <span class="title">복합악취</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value strong">3</span>
+                                        <span class="con_unit">배수</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">메틸머캅탄</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0000</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">황화수소</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0016</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">암모니아</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0078</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="stinking_time">
+                            <span class="text">복합악취 시간초과</span>
+                            <span class="icon no_text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 나쁨 -->
+            <!-- <div class="fixed_icon" id="oms_4">
+                <div class="icon_wrap">
+                    <button type="button" class="icon bad">
+                        <span class="icon_text">나쁨</span>
+                    </button>
+                    <div class="pstn_info_wrap">
+                        <div class="pstn_info">
+                            <h5 class="title">OMS #4</h5>
+                            <ul class="pstn_list">
+                                <li>
+                                    <span class="title">복합악취</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value strong">3</span>
+                                        <span class="con_unit">배수</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">메틸머캅탄</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0000</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">황화수소</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0016</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">암모니아</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0078</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="stinking_time">
+                            <span class="text">복합악취 시간초과</span>
+                            <span class="icon no_text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 매우나쁨 -->
+            <!-- <div class="fixed_icon" id="oms_5">
+                <div class="icon_wrap">
+                    <button type="button" class="icon trash">
+                        <span class="icon_text">매우나쁨</span>
+                    </button>
+                    <div class="pstn_info_wrap">
+                        <div class="pstn_info">
+                            <h5 class="title">OMS #5</h5>
+                            <ul class="pstn_list">
+                                <li>
+                                    <span class="title">복합악취</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value strong">3</span>
+                                        <span class="con_unit">배수</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">메틸머캅탄</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0000</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">황화수소</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0016</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="title">암모니아</span>
+                                    <div class="con_wrap">
+                                        <span class="con_value">0.0078</span>
+                                        <span class="con_unit">ppm</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="stinking_time">
+                            <span class="text">복합악취 시간초과</span>
+                            <span class="icon no_text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        <!-- </div> -->
+
+
+        <div id="map">
+        </div>
+    </div>
+
+    
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9&submodules=geocoder"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+    
+var HOME_PATH = window.HOME_PATH || '.';
+
+var obj_json_result;
+
+var obj_json_result;
+var markers = [],
+    infoWindows = [];
+    currentMarkers = [];
+    
+var start_position_x = 0;
+var start_position_y = 0;
+
+
+// var map = new naver.maps.Map('map', {
+//     // center: new naver.maps.LatLng(35.8785219, 128.5093226),
+//     center: new naver.maps.LatLng(35.87614905144454, 128.5141846192369),
+//     zoom: 14,
+//     scaleControl: false,     // 축척 표시    
+//     logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
+//     mapDataControl: true,   // 저작권
+//     zoomControl: false,
+//     zoomControlOptions: {
+//         position: naver.maps.Position.RIGHT_CENTER
+//     },
+//     draggable: false,
+//     pinchZoom: false,
+//     // scrollWheel: false,
+//     keyboardShortcuts: false,
+//     disableDoubleTapZoom: true,
+//     disableDoubleClickZoom: true,
+//     disableTwoFingerTapZoom: true,
+
+//     mapTypeId: naver.maps.MapTypeId.SATELLITE,  // 기본지도 위성으로 설정
+//     mapTypeControl: false,    // 일반, 위성
+//     mapTypeControlOptions: {
+//         style: naver.maps.MapTypeControlStyle.BUTTON,
+//         position: naver.maps.Position.TOP_RIGHT
+//     },
+// });
+
+
+
+    
+
+
+// sample data 가져오기
+$.getJSON("../assets/data/sample.json", function(json) {
+    let data_result = json.positions;
+
+    let zoom = json.map_zoom;
+    let map_center_x = json.map_center_x;
+    let map_center_y = json.map_center_y;
+
+    var map = new naver.maps.Map('map', {
+        center: new naver.maps.LatLng(map_center_y, map_center_x),
+        zoom: zoom,
+        scaleControl: false,     // 축척 표시    
+        logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
+        mapDataControl: true,   // 저작권
+        zoomControl: false,
+        zoomControlOptions: {
+            position: naver.maps.Position.RIGHT_CENTER
+        },
+        draggable: false,
+        pinchZoom: false,
+        // scrollWheel: false,
+        keyboardShortcuts: false,
+        disableDoubleTapZoom: true,
+        disableDoubleClickZoom: true,
+        disableTwoFingerTapZoom: true,
+    
+        mapTypeId: naver.maps.MapTypeId.SATELLITE,  // 기본지도 위성으로 설정
+        mapTypeControl: false,    // 일반, 위성
+        mapTypeControlOptions: {
+            style: naver.maps.MapTypeControlStyle.BUTTON,
+            position: naver.maps.Position.TOP_RIGHT
+        },
+    });
+
+
+    var rect = new naver.maps.Rectangle({
+        bounds: map.getBounds(), // 지도의 bounds와 동일한 크기의 사각형을 그립니다.
+        map: map
+    });
+
+    naver.maps.Event.addListener(map, "bounds_changed", function(bounds) {
+        window.setTimeout(function() {
+        }, 500);
+        rect.setBounds(bounds);
+    });
+    
+    // // bounds 영역에 지도 맞추기
+    var val_area = new naver.maps.LatLngBounds(new naver.maps.LatLng(35.86960445199442, 128.52223281924583), new naver.maps.LatLng(35.885458936691684, 128.50448847697098));
+    map.fitBounds(val_area); // 독도의 bounds에 맞춰 지도를 이동합니다.
+        
+
+    
+
+    data_result.forEach(function(e, num){
+        let oms_id = e.oms_id;
+
+        let adr = e.oms_adr;
+        let oms_x = e.oms_x;   // 경도
+        let oms_y = e.oms_y;   // 위도
+        
+        let stts = e.stts;     // 매우좋음 ~ 매우나쁨
+
+        let stink = e.stink;   // 복합악취
+        let ch3sh = e.ch3sh;   // 메틸머캅탄
+        let h2s = e.h2s;       // 황화수소
+        let nh3 = e.nh3;       // 암모니아
+
+
+
+        let stts_cls = '';
+        let stts_txt = '';
+    
+        switch (stts) {
+            case '1':
+                stts_cls = 'perfect';
+                stts_txt = '매우좋음';
+                break;
+    
+            case '2':
+                stts_cls = 'good';
+                stts_txt = '좋음';
+                break;
+    
+            case '3':
+                stts_cls = 'soso';
+                stts_txt = '보통';
+                break;
+    
+            case '4':
+                stts_cls = 'bad';
+                stts_txt = '나쁨';
+                break;
+                
+            case '5':
+                stts_cls = 'trash';
+                stts_txt = '매우나쁨';
+                break;
+        
+            default:
+                break;
+        }
+
+        let chk_tm = (e.chk_tm == '0')? '': 'time_over';
+        let chk_tm_txt = (e.chk_tm == '0')? '정상': '시간초과';
+
+        
+
+        
+        var position = new naver.maps.LatLng(oms_y, oms_x);
+
+
+        
+        
+
+        // var con_info_txt = $(
+            //     '<div class="pstn_info_wrap">'
+            //     + '    <div class="pstn_info">'
+            //     + '        <h5 class="title">OMS #'+oms_id+'</h5>'
+            //     + '        <ul class="pstn_list">'
+            //     + '            <li>'
+            //     + '                <span class="title">복합악취</span>'
+            //     + '                <div class="con_wrap">'
+            //     + '                    <span class="con_value strong">'+stink+'</span>'
+            //     + '                    <span class="con_unit">배수</span>'
+            //     + '                </div>'
+            //     + '            </li>'
+            //     + '            <li>'
+            //     + '                <span class="title">메틸머캅탄</span>'
+            //     + '                <div class="con_wrap">'
+            //     + '                    <span class="con_value">'+ch3sh+'</span>'
+            //     + '                    <span class="con_unit">ppm</span>'
+            //     + '                </div>'
+            //     + '            </li>'
+            //     + '            <li>'
+            //     + '                <span class="title">황화수소</span>'
+            //     + '                <div class="con_wrap">'
+            //     + '                    <span class="con_value">'+h2s+'</span>'
+            //     + '                    <span class="con_unit">ppm</span>'
+            //     + '                </div>'
+            //     + '            </li>'
+            //     + '            <li>'
+            //     + '                <span class="title">암모니아</span>'
+            //     + '                <div class="con_wrap">'
+            //     + '                    <span class="con_value">'+nh3+'</span>'
+            //     + '                    <span class="con_unit">ppm</span>'
+            //     + '                </div>'
+            //     + '            </li>'
+            //     + '        </ul>'
+            //     + '    </div>'
+            //     + '    <div class="stinking_time '+chk_tm+'">'
+            //     + '        <span class="text">복합악취 시간초과</span>'
+            //     + '        <span class="icon ball no_text">'+chk_tm_txt+'<span class="inner_ball"></span></span>'
+            //     + '    </div>'
+            //     + '</div>'
+            // );
+
+            
+            // var CustomOverlay = function (options) {
+
+            //     this._element = con_info_txt;
+            //     this.setPosition(options.position);
+            //     this.setMap(options.map || null);
+            // };
+              
+            // CustomOverlay.prototype = new naver.maps.OverlayView();
+            // CustomOverlay.prototype.constructor = CustomOverlay;
+            
+            // CustomOverlay.prototype.setPosition = function(position) {
+            //     this._position = position;
+            //     this.draw();
+            // };
+            
+            // CustomOverlay.prototype.getPosition = function() {
+            //     return this._position;
+            // };
+            
+            // CustomOverlay.prototype.onAdd = function() {
+            //     var overlayLayer = this.getPanes().overlayLayer;
+            
+            //     this._element.appendTo(overlayLayer);
+            // };
+            
+            // CustomOverlay.prototype.draw = function() {
+            //     if (!this.getMap()) {
+            //         return;
+            //     }
+            
+            //     var projection = this.getProjection(),
+            //         position = this.getPosition(),
+            //         pixelPosition = projection.fromCoordToOffset(position);
+
+            //         // console.log(pixelPosition);
+            
+            //     this._element.css('left', pixelPosition.x - 100);
+            //     this._element.css('top', pixelPosition.y - 210);
+            // };
+            
+            // CustomOverlay.prototype.onRemove = function() {
+            //     var overlayLayer = this.getPanes().overlayLayer;
+            
+            //     this._element.remove();
+            //     this._element.off();
+            // };
+            
+            // var overlay = new CustomOverlay({
+            //     map: map,
+            //     position: position
+            // });
+            
+           
+
+            // markers.push(marker);
+            // infowindow.open(map, marker);
+
+            var MarkerOverlapRecognizer = function(opts) {
+                console.log(opts);
+            this._options = $.extend({
+                tolerance: 5,
+                highlightRect: true,
+                highlightRectStyle: {
+                    strokeColor: '#ff0000',
+                    strokeOpacity: 1,
+                    strokeWeight: 2,
+                    strokeStyle: 'dot',
+                    fillColor: '#ff0000',
+                    fillOpacity: 0.5
+                },
+                intersectNotice: true,
+                intersectNoticeTemplate: '<div style="width:180px;border:solid 1px #333;background-color:#fff;padding:5px;"><em style="font-weight:bold;color:#f00;">{{count}}</em>개의 마커가 있습니다.</div>',
+                intersectList: true,
+                intersectListTemplate: '<div style="width:200px;border:solid 1px #333;background-color:#fff;padding:5px;">'
+                    + '<ul style="list-style:none;margin:0;padding:0;">'
+                    + '{{#repeat}}'
+                    + '<li style="list-style:none;margin:0;padding:0;"><a href="#">{{order}}. {{title}}</a></li>'
+                    + '{{/#repeat}}'
+                    + '</ul>'
+                    + '</div>'
+            }, opts);
+            
+            this._listeners = [];
+            this._markers = [];
+            
+            this._rectangle = new naver.maps.Rectangle(this._options.highlightRectStyle);
+            this._overlapInfoEl = $('<div style="position:absolute;z-index:100;margin:0;padding:0;display:none;"></div>');
+            this._overlapListEl = $('<div style="position:absolute;z-index:100;margin:0;padding:0;display:none;"></div>');
+            };
+            MarkerOverlapRecognizer.prototype = {
+            constructor: MarkerOverlapRecognizer,
+            
+            setMap: function(map) {
+                var oldMap = this.getMap();
+            
+                if (map === oldMap) return;
+            
+                this._unbindEvent();
+            
+                this.hide();
+            
+                if (map) {
+                    this._bindEvent(map);
+                    this._overlapInfoEl.appendTo(map.getPanes().floatPane);
+                    this._overlapListEl.appendTo(map.getPanes().floatPane);
+                }
+            
+                this.map = map || null;
+            },
+            
+            getMap: function() {
+                return this.map;
+            },
+            
+            _bindEvent: function(map) {
+                var listeners = this._listeners,
+                    self = this;
+            
+                listeners.push(
+                    map.addListener('idle', $.proxy(this._onIdle, this)),
+                    map.addListener('click', $.proxy(this._onIdle, this))
+                );
+            
+                this.forEach(function(marker) {
+                    listeners = listeners.concat(self._bindMarkerEvent(marker));
+                });
+            },
+            
+            _unbindEvent: function(map_) {
+                var map = map_ || this.getMap();
+            
+                naver.maps.Event.removeListener(this._listeners);
+                this._listeners = [];
+            
+                this._rectangle.setMap(null);
+                this._overlapInfoEl.remove();
+                this._overlapListEl.remove();
+            },
+            
+            add: function(marker) {
+                this._listeners = this._listeners.concat(this._bindMarkerEvent(marker));
+                this._markers.push(marker);
+            },
+            
+            remove: function(marker) {
+                this.forEach(function(m, i, markers) {
+                    if (m === marker) {
+                        markers.splice(i, 1);
+                    }
+                });
+                this._unbindMarkerEvent(marker);
+            },
+            
+            forEach: function(callback) {
+                var markers = this._markers;
+            
+                for (var i=markers.length-1; i>=0; i--) {
+                    callback(markers[i], i, markers);
+                }
+            },
+            
+            hide: function() {
+                this._overlapListEl.hide();
+                this._overlapInfoEl.hide();
+                this._rectangle.setMap(null);
+            },
+            
+            _bindMarkerEvent: function(marker) {
+                marker.__intersectListeners = [
+                    marker.addListener('mouseover', $.proxy(this._onOver, this)),
+                    marker.addListener('mouseout', $.proxy(this._onOut, this)),
+                    marker.addListener('mousedown', $.proxy(this._onDown, this))
+                ];
+            
+                return marker.__intersectListeners;
+            },
+            
+            _unbindMarkerEvent: function(marker) {
+                naver.maps.Event.removeListener(marker.__intersectListeners);
+                delete marker.__intersectListeners;
+            },
+            
+            getOverlapRect: function(marker) {
+                var map = this.getMap(),
+                    proj = map.getProjection(),
+                    position = marker.getPosition(),
+                    offset = proj.fromCoordToOffset(position),
+                    tolerance = this._options.tolerance || 3,
+                    rectLeftTop = offset.clone().sub(tolerance, tolerance),
+                    rectRightBottom = offset.clone().add(tolerance, tolerance);
+            
+                return naver.maps.PointBounds.bounds(rectLeftTop, rectRightBottom);
+            },
+            
+            getOverlapedMarkers: function(marker) {
+                var baseRect = this.getOverlapRect(marker),
+                    overlaped = [{
+                        marker: marker,
+                        rect: baseRect
+                    }],
+                    self = this;
+            
+                this.forEach(function(m) {
+                    if (m === marker) return;
+            
+                    var rect = self.getOverlapRect(m);
+            
+                    if (rect.intersects(baseRect)) {
+                        overlaped.push({
+                            marker: m,
+                            rect: rect
+                        });
+                    }
+                });
+            
+                return overlaped;
+            },
+            
+            _onIdle: function() {
+                this._overlapInfoEl.hide();
+                this._overlapListEl.hide();
+            },
+            
+            _onOver: function(e) {
+                var marker = e.overlay,
+                    map = this.getMap(),
+                    proj = map.getProjection(),
+                    offset = proj.fromCoordToOffset(marker.getPosition()),
+                    overlaped = this.getOverlapedMarkers(marker);
+            
+                if (overlaped.length > 1) {
+                    if (this._options.highlightRect) {
+                        var bounds;
+            
+                        for (var i=0, ii=overlaped.length; i<ii; i++) {
+                            if (bounds) {
+                                bounds = bounds.union(overlaped[i].rect);
+                            } else {
+                                bounds = overlaped[i].rect.clone();
+                            }
+                        };
+            
+                        var min = proj.fromOffsetToCoord(bounds.getMin()),
+                            max = proj.fromOffsetToCoord(bounds.getMax());
+            
+                        this._rectangle.setBounds( naver.maps.LatLngBounds.bounds(min, max) );
+                        this._rectangle.setMap(map);
+                    }
+            
+                    if (this._options.intersectNotice) {
+                        this._overlapInfoEl
+                            .html(this._options.intersectNoticeTemplate.replace(/\{\{count\}\}/g, overlaped.length))
+                            .css({
+                                left: offset.x,
+                                top: offset.y
+                            })
+                            .show();
+                    }
+                } else {
+                    this.hide();
+                }
+            },
+            
+            _onOut: function(e) {
+                this._rectangle.setMap(null);
+                this._overlapInfoEl.hide();
+            },
+          
+            _renderIntersectList: function(overlaped, offset) {
+                if (!this._options.intersectList) return;
+            
+                var listLayer = this._overlapListEl;
+            
+                var REPEAT_REGEX = /\{\{#repeat\}\}([\s\S]*)\{\{\/#repeat\}\}/gm,
+                    template = this._options.intersectListTemplate,
+                    itemTemplate = null,
+                    itemPlace = null,
+                    matches = REPEAT_REGEX.exec(template),
+                    uid = this._guid(),
+                    self = this;
+            
+                listLayer.empty();
+            
+                if (matches && matches.length >= 2) {
+                    template = template.replace(matches[0], '<div id="intersects-'+ uid +'"></div>');
+                    itemTemplate = matches[1];
+            
+                    listLayer.append($(template));
+            
+                    var placeholder = $('#intersects-'+ uid);
+            
+                    itemPlace = placeholder.parent();
+            
+                    placeholder.remove();
+                    placeholder = null;
+                } else {
+                    itemTemplate = template;
+                    itemPlace = listLayer;
+                }
+            
+                var items = [];
+                for (var i=0, ii=overlaped.length; i<ii; i++) {
+                    var c = overlaped[i],
+                        item = $(itemTemplate.replace(/\{\{(\w+)\}\}/g, function(match, symbol) {
+                            if (symbol === 'order') {
+                                return i+1;
+                            } else if (symbol in marker) {
+                                return c.marker[symbol];
+                            } else if (c.marker.get(symbol)) {
+                                return c.marker.get(symbol);
+                            } else {
+                                match;
+                            }
+                        }));
+            
+                    item.on('click', $.proxy(self._onClickItem, self, c.marker));
+                    items.push(item);
+                };
+            
+                for (var j=0, jj=items.length; j<jj; j++) {
+                    itemPlace.append(items[j]);
+                }
+            
+                listLayer.css({
+                            left: offset.x + 5,
+                            top: offset.y
+                        })
+                        .show();
+            },
+            
+            _onDown: function(e) {
+                var marker = e.overlay,
+                    map = this.getMap(),
+                    proj = map.getProjection(),
+                    offset = proj.fromCoordToOffset(marker.getPosition()),
+                    overlaped = this.getOverlapedMarkers(marker),
+                    self = this;
+            
+                naver.maps.Event.resumeDispatch(marker, 'click');
+            
+                if (overlaped.length <= 1) {
+                    return;
+                }
+            
+                naver.maps.Event.stopDispatch(marker, 'click');
+                this._renderIntersectList(overlaped, offset);
+                this._overlapInfoEl.hide();
+            
+                naver.maps.Event.trigger(this, 'overlap', overlaped);
+            },
+            
+            _onClickItem: function(marker, e) {
+                naver.maps.Event.resumeDispatch(marker, 'click');
+            
+                naver.maps.Event.trigger(this, 'clickItem', {
+                    overlay: marker,
+                    originalEvent: e.originalEvent
+                });
+            
+                marker.trigger('click');
+            }
+            };
+            
+            var recognizer = new MarkerOverlapRecognizer({
+                highlightRect: false,
+                tolerance: 5
+            });
+            recognizer.setMap(map);
+            
+            var bounds = map.getBounds(),
+            southWest = bounds.getSW(),
+            northEast = bounds.getNE(),
+            lngSpan = northEast.lng() - southWest.lng(),
+            latSpan = northEast.lat() - southWest.lat();
+            
+           
+            
+            function unhighlightMarker(marker) {
+                marker.setZIndex(100);
+            }
+
+            var marker = new naver.maps.Marker({
+            position: position,
+            map: map,
+            title: 'oms_'+oms_id,
+            icon: {
+                content: [
+                    '<div class="fixed_icon" id="oms_'+oms_id+'">',
+                    '    <div class="icon_wrap">',
+                    '        <button type="button" class="icon '+stts_cls+'">',
+                    '            <span class="icon_text">'+stts_txt+'</span>',
+                    '        </button>',
+                    '    </div>',
+                    '    <div class="pstn_info_wrap">',
+                    '        <div class="pstn_info">',
+                    '            <h5 class="title">OMS #'+oms_id+'</h5>',
+                    '            <ul class="pstn_list">',
+                    '                <li>',
+                    '                    <span class="title">복합악취</span>',
+                    '                    <div class="con_wrap">',
+                    '                        <span class="con_value strong">'+stink+'</span>',
+                    '                        <span class="con_unit">배수</span>',
+                    '                    </div>',
+                    '                </li>',
+                    '                <li>',
+                    '                    <span class="title">메틸머캅탄</span>',
+                    '                    <div class="con_wrap">',
+                    '                        <span class="con_value">'+ch3sh+'</span>',
+                    '                        <span class="con_unit">ppm</span>',
+                    '                    </div>',
+                    '                </li>',
+                    '                <li>',
+                    '                    <span class="title">황화수소</span>',
+                    '                    <div class="con_wrap">',
+                    '                        <span class="con_value">'+h2s+'</span>',
+                    '                        <span class="con_unit">ppm</span>',
+                    '                    </div>',
+                    '                </li>',
+                    '                <li>',
+                    '                    <span class="title">암모니아</span>',
+                    '                    <div class="con_wrap">',
+                    '                        <span class="con_value">'+nh3+'</span>',
+                    '                        <span class="con_unit">ppm</span>',
+                    '                    </div>',
+                    '                </li>',
+                    '            </ul>',
+                    '        </div>',
+                    '        <div class="stinking_time '+chk_tm+'">',
+                    '            <span class="text">복합악취 시간초과</span>',
+                    '            <span class="icon ball no_text">'+chk_tm_txt+'<span class="inner_ball"></span></span>',
+                    '        </div>',
+                    '    </div>',
+                    '</div>',
+                ].join(''),
+                size: new naver.maps.Size(170, 177),
+                anchor: new naver.maps.Point(19, 58),
+            },
+            // draggable: false,
+            zIndex: 100
+        });
+            
+        
+            marker.addListener('click', function(e) {
+                var m = e.overlay;
+            
+                m.setZIndex(1000);
+            });
+
+            recognizer.add(marker);
+            
+            var overlapCoverMarker = null;
+            naver.maps.Event.addListener(recognizer, 'overlap', function(list) {
+                if (overlapCoverMarker) {
+                    unhighlightMarker(overlapCoverMarker);
+                }
+                
+                overlapCoverMarker = list[0].marker;
+                
+                naver.maps.Event.once(overlapCoverMarker, 'mouseout', function() {
+                    highlightMarker(overlapCoverMarker);
+                });
+            });
+            
+            naver.maps.Event.addListener(recognizer, 'clickItem', function(e) {
+                recognizer.hide();
+                
+                if (overlapCoverMarker) {
+                    unhighlightMarker(overlapCoverMarker);
+                
+                    overlapCoverMarker = null;
+                }
+            });
+    
+    
+    
+    
+            
+    });
+});
+
+
+// 주소 > 좌표 검색
+// naver.maps.Service.geocode({
+//     query: '대구 달성군 다사읍 다사로 822'
+//     }, function(status, response) {
+//     if (status !== naver.maps.Service.Status.OK) {
+//         return alert('Something wrong!');
+//     }
+    
+//     var result = response.v2, // 검색 결과의 컨테이너
+//         items = result.addresses; // 검색 결과의 배열
+    
+//     // do Something
+
+//     start_position_x = items[0].x;
+//     start_position_y = items[0].y;
+
+//     console.log(items[0]);
+
+//     // var position = new naver.maps.LatLng(start_position_y, start_position_x);
+
+//     // var map = new naver.maps.Map('map', {
+//     //     center: new naver.maps.LatLng(start_position_y, start_position_x),
+//     //     zoom: 16,
+//     //     scaleControl: false,     // 축척 표시    
+//     //     logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
+//     //     mapDataControl: true,   // 저작권
+//     //     zoomControl: true,
+//     //     zoomControlOptions: {
+//     //         position: naver.maps.Position.RIGHT_CENTER
+//     //     },
+//     //     mapTypeId: 'satellite',  // 기본지도 위성으로 설정
+//     //     mapTypeControl: false,    // 일반, 위성
+//     //     mapTypeControlOptions: {
+//     //         style: naver.maps.MapTypeControlStyle.BUTTON,
+//     //         position: naver.maps.Position.TOP_RIGHT
+//     //     },
+//     // });
+// });
+
+
+
+// var drawingManager;
+// naver.maps.Event.once(map, 'init', function () {
+//     drawingManager = new naver.maps.drawing.DrawingManager({
+//         map: map,
+//         rectangleOptions: {
+//             fillColor: '#ff0000',
+//             fillOpacity: 0.5,
+//             strokeWeight: 3,
+//             strokeColor: '#ff0000'
+//         },
+//         ellipseOptions: {
+//             fillColor: '#ff25dc',
+//             fillOpacity: 0.5,
+//             strokeWeight: 3,
+//             strokeColor: '#ff25dc'
+//         },
+//         polylineOptions: {
+//             strokeColor: '#222',
+//             strokeWeight: 3,
+//         },
+//         arrowlineOptions: {
+//             endIconSize: 16,
+//             strokeWeight: 3
+//         },
+//         polygonOptions: {
+//             fillColor: '#ffc300',
+//             fillOpacity: 0.5,
+//             strokeWeight: 3,
+//             strokeColor:'#ffc300'
+//         }
+//     });
+// });
+
+
+// var map = new naver.maps.Map('map', {
+//     zoomControl: true,
+//     zoomControlOptions: {
+//         style: naver.maps.ZoomControlStyle.LARGE,
+//         position: naver.maps.Position.TOP_RIGHT
+//     },
+//     mapTypeControl: true,
+//     zoom: 15
+// });
+// var restoreMap = new naver.maps.Map('restoreMap', {
+//     zoomControl: true,
+//     zoomControlOptions: {
+//         style: naver.maps.ZoomControlStyle.LARGE,
+//         position: naver.maps.Position.TOP_RIGHT
+//     },
+//     mapTypeControl: true,
+//     zoom: 15
+// });
+
+// $("#to-dokdo").on("click", function(e) {
+//     e.preventDefault();
+
+//     if (geojson) {
+//         restoreMap.data.removeGeoJson(geojson);
+//         geojson = null;
+//     }
+
+//     geojson = drawingManager.toGeoJson();
+//     restoreMap.data.addGeoJson(geojson, true);
+// });
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

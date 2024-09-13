@@ -1,0 +1,30 @@
+/* common */
+body span{
+    font-size: 1rem;
+}
+
+select{
+    appearance: auto;
+}
+/* common end */
+
+
+
+/* main project category */
+.wrap{
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+    background-color: #ecf0f1;
+    overflow: auto;
+}
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+}
+
+.banner{
+    flex-grow: 1;
+    width: 100%;
+}

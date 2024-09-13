@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>healthTimer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/healthTimer/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/healthTimer/assets/css/common.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/healthTimer/assets/css/main.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://poleji.cafe24.com/home/healthTimer/assets/js/script.js"></script>
+    
+
+    <style type="text/css">
+        #realTimeImage{
+            position: relative;
+        }
+        #secondHand_2 {
+            transform-origin: 50% 100%; /* 회전 중심점을 circle의 하단 중앙으로 설정 */
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        
+        <div class="header_wrap flex">
+            <button type="button" class="btn_icon back">
+                <span class="no_text icon">뒤로가기</span>
+            </button>
+            <div class="title_wrap">
+                <h2 class="title">옵션</h2>
+                
+            </div>
+            <button type="button" class="btn_icon setting">
+                <span class="no_text icon">설정</span>
+            </button>
+        </div>
+        <div class="body_wrap">
+            <div class="container">
+                <div class="title_wrap">
+                    <h5 class="title">글자크기</h5>
+                </div>
+                <div class="content_wrap">
+
+                    <ul class="choice_wrap radio btn_label flex">
+                        <li>
+                            <label>
+                                <input type="radio" name="fsz_01">
+                                <span class="input radio"></span>
+                                <div class="label_wrap">
+                                    <span class="label">사이즈 작게</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="fsz_01">
+                                <span class="input radio"></span>
+                                <div class="label_wrap">
+                                    <span class="label">사이즈 적당히</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="fsz_01">
+                                <span class="input radio"></span>
+                                <div class="label_wrap">
+                                    <span class="label">사이즈 크게</span>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="title_wrap">
+                    <h5 class="title">글자크기</h5>
+                </div>
+                <div class="content_wrap">
+                    <div class="input_wrap">
+                        <input type="text">
+                    </div>
+
+                </div>
+            </div>
+            <div class="container">
+                <div class="title_wrap">
+                    <h5 class="title">글자크기</h5>
+                </div>
+                <div class="content_wrap">
+                    <ul class="choice_wrap checkbox btn_label flex">
+                        <li>
+                            <label>
+                                <input type="checkbox" name="fsz">
+                                <span class="input checkbox"></span>
+                                <div class="label_wrap">
+                                    <span class="label">사이즈 작게</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="fsz">
+                                <span class="input checkbox"></span>
+                                <div class="label_wrap">
+                                    <span class="label">사이즈 적당히</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="fsz">
+                                <span class="input checkbox"></span>
+                                <div class="label_wrap">
+                                    <span class="label">사이즈 크게</span>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID&submodules=geocoder"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    
+});
+
+window.onbeforeunload = function () {
+	return alert('나가?'); 
+}
+
+</script>
+
+
+</body>
+</html>

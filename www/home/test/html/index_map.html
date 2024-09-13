@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <title>test_map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/test/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/test/assets/css/common.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/test/assets/css/main.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://poleji.cafe24.com/home/test/assets/js/script.js"></script>
+    
+
+    <style type="text/css">
+        #realTimeImage{
+            position: relative;
+        }
+        #secondHand_2 {
+            transform-origin: 50% 100%; /* 회전 중심점을 circle의 하단 중앙으로 설정 */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <svg id="clock" width="200" height="200" viewBox="0 0 200 200">
+            <!-- 시침 -->
+            <line id="hourHand" x1="100" y1="100" x2="100" y2="70" stroke="black" stroke-width="8" stroke-linecap="round"/>
+          
+            <!-- 분침 -->
+            <line id="minuteHand" x1="100" y1="100" x2="100" y2="50" stroke="blue" stroke-width="5" stroke-linecap="round"/>
+          
+            <!-- 초침 -->
+            <line id="secondHand" x1="100" y1="100" x2="100" y2="30" stroke="red" stroke-width="2" stroke-linecap="round"/>
+          
+            <!-- 시계 중심점 -->
+            <circle cx="100" cy="100" r="5" fill="red"/>
+        </svg>
+
+
+        <svg id="realTimeImage" width="200" height="200" viewBox="0 0 200 200">
+            <!-- 기본 모양 -->
+            <circle cx="100" cy="100" r="50" fill="blue" />
+          
+            <!-- 초침 -->
+            <line id="secondHand_2" x1="100" y1="100" x2="100" y2="50" stroke="red" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        
+    </div>
+
+    
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID&submodules=geocoder"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+    function updateClock() {
+    const currentTime = new Date();
+    const hoursAngle = (currentTime.getHours() % 12 + currentTime.getMinutes() / 60) * 30;
+    const minutesAngle = currentTime.getMinutes() * 6;
+    const secondsAngle = currentTime.getSeconds() * 6;
+
+    // jQuery를 사용하여 속성 업데이트
+    $('#hourHand').attr('transform', `rotate(${hoursAngle}, 100, 100)`);
+    $('#minuteHand').attr('transform', `rotate(${minutesAngle}, 100, 100)`);
+    $('#secondHand').attr('transform', `rotate(${secondsAngle}, 100, 100)`);
+  }
+
+  // 1초마다 시계 업데이트
+  setInterval(updateClock, 1000);
+
+  // 초기화
+  updateClock();
+
+
+
+  function updateImage() {
+    const currentTime = new Date();
+    const secondsAngle = currentTime.getSeconds() * 6;
+
+    // 초침 회전
+    document.getElementById('secondHand_2').style.transform = `rotate(${secondsAngle}deg)`;
+  }
+
+  // 1초마다 이미지 업데이트
+  setInterval(updateImage, 1000);
+
+  // 초기화
+  updateImage();
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>메인</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/todo_maps/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/todo_maps/assets/css/common.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="https://poleji.cafe24.com/home/js/login.js"></script>
+    <script src="https://poleji.cafe24.com/home/todo_maps/assets/js/script.js"></script>
+
+
+    <style type="text/css">
+        html,
+        html *{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap main_pj">
+        <div class="title_wrap">
+            <h1 class="title">프로젝트 목록</h1>
+        </div>
+        <div class="project_wrap overflow_y">
+            <a href="https://poleji.cafe24.com/home/todo_maps/index.html">todo_maps</a>
+            <a href="https://poleji.cafe24.com/home/smallbee/php/index.php">smallbee</a>
+            <a href="https://poleji.cafe24.com/home/nonamed/index.html">nonamed</a>
+            <a href="https://poleji.cafe24.com/home/gbdc/index.html">gbdc</a>
+            <a href="https://poleji.cafe24.com/home/test/index.html">test</a>
+            <a href="https://poleji.cafe24.com/home/healthTimer/index.html">healthTimer</a>
+            <a href="https://poleji.cafe24.com/home/page_login.php">토큰로그인</a>
+        </div>
+
+        <button type="button" id="btn_logout">
+            <a href="javascript:void(0)">
+                <span>카카오 로그아웃</span>
+            </a>
+        </button>
+    </div>
+</body>
+<script>
+    Kakao.init('d41148939f2801ea4222671ee2b5191e'); //발급받은 키 중 javascript키를 사용해준다.
+
+    $("#btn_logout").on('click', function() {
+        kakaoLogout();
+    })
+</script>
+</html>
