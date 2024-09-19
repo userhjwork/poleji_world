@@ -3,15 +3,6 @@ include("./header.php");
 
 // MySQL 연결
 $conn = connectToDB();
-
-// $sql = 'SELECT * FROM tbl_user';
-// $result = $conn->query($sql);
-// while ($row = $result->fetch_assoc()): 
-//     echo "<pre>";
-//     print_r($row);
-//     echo "</pre>";
-// endwhile;
-
 ?>
 
 <!DOCTYPE html>
@@ -66,10 +57,6 @@ $conn = connectToDB();
         
         $(document).ready(function(){
 
-            let at = localStorage.getItem('access_token');
-            let rt = localStorage.getItem('refresh_token');
-
-            check_token('page_login');
         })
 
         // 로그인
@@ -87,7 +74,7 @@ $conn = connectToDB();
                 }));
 
             // 요청
-            fetch('/home/login.php', {
+            fetch('login.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -99,16 +86,14 @@ $conn = connectToDB();
             })
             .then(response => response.json())
             .then(data => {
-                if (data.access_token && data.refresh_token) {
-                    localStorage.setItem('access_token', data.access_token);
-                    localStorage.setItem('refresh_token', data.refresh_token);
-                    alert('Login successful!');
+                if (data.valid) {
+                    alert(username+'님 반갑습니다');
                     console.log(data);
                     
                     // 페이지 리디렉션
-                    location.href = './dashboard.php';
+                    window.location.href = './dashboard.php';
                 } else {
-                    alert('다시 로그인해주십시오');
+                    alert('아이디 또는 비밀번호가 일치하지 않습니다. \n다시 시도해주세요.');
                 }
 
             });

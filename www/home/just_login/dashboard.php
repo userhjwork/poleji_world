@@ -21,7 +21,7 @@ $conn = connectToDB();
             <div class="header flex" id="header">
                 <div class="h_logo_wrap" id="mainlogo">
                     <div class="img_wrap">
-                        <p>POLEJIWARLD</p>
+                        <p>POLEJIWoRLD</p>
                     </div>
                 </div>
                 <div class="button_wrap option_wrap">
@@ -51,16 +51,15 @@ $conn = connectToDB();
 
     <script>
         $(document).ready(function(){
-            check_token('dashboard');
         })
 
         $(document).on('click', '#h_logout', function(){
-            logout('dashboard');
+            window.location.href = 'page_login.php';
         })
 
-        $(document).on('click', '#h_admin', function(){
-            window.location.href='user_admin.php';
-        })
+        // $(document).on('click', '#h_admin', function(){
+        //     window.location.href='user_admin.php';
+        // })
     </script>
 </body>
 </html>
