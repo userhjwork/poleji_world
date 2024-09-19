@@ -7,7 +7,7 @@ $conn = connectToDB();
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" minimum-scale=1.0 maximum-scale=1.0/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1.0 maximum-scale=1.0"/>
     <title>dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/css/normalize.css">
@@ -42,9 +42,8 @@ $conn = connectToDB();
                 </div>
             </div>
             <div class="footer" id="footer"></div>
-
-            
-
+        </div>
+    </div>
     <script>
         $(document).ready(function(){
         })
