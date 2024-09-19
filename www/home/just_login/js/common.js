@@ -19,11 +19,8 @@ function check_token(location='') {
                 if (data.valid) {
                     console.log('토큰 유효: 로그인 유지됨');
                     console.log(data.valid);
-
-                     console.log(location);
                     // 토큰이 유효하면 로그인페이지에서는 데시보드로 이동
                     if (location == 'page_login') {
-                        console.log('hi');
                         window.location.href = 'dashboard.php';
                     }
 
