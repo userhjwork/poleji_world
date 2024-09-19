@@ -21,17 +21,13 @@ $conn = connectToDB();
             <div class="header flex" id="header">
                 <div class="h_logo_wrap" id="mainlogo">
                     <div class="img_wrap">
-                        <p>POLEJIWORLD</p>
+                        <p>POLEJIWoRLD</p>
                     </div>
                 </div>
                 <div class="button_wrap option_wrap">
                     <button type="button" class="btn_icon logout" id="h_logout">
                         <span class="no_text">logout</span>
                         <span class="text">logout</span>
-                    </button>
-                    <button type="button" class="btn_icon admin" id="h_admin">
-                        <span class="no_text">admin</span>
-                        <span class="text">관리자페이지</span>
                     </button>
                 </div>
             </div>
