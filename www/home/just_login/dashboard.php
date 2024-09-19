@@ -21,7 +21,7 @@ $conn = connectToDB();
             <div class="header flex" id="header">
                 <div class="h_logo_wrap" id="mainlogo">
                     <div class="img_wrap">
-                        <p>POLEJIWoRLD</p>
+                        <p>POLEJIWORLD</p>
                     </div>
                 </div>
                 <div class="button_wrap option_wrap">
