@@ -19,20 +19,14 @@ $result = $stmt->get_result(); // 실행한 쿼리의 결과를 가져오는 함
 
 // 리프레시 토큰도 재발급
 if ($result->num_rows > 0) {
-   
-    $stmt->execute();
 
     // 새 토큰 반환
-    echo json_encode([
-        'access_token' => $new_access_token,
-        'refresh_token' => $new_refresh_token
-    ]);
+    echo json_encode(['valid' => true]);
 
     exit(); // 이후에 다른 출력을 방지
 } else {
     // refresh_token이 유효하지 않음
-    echo json_encode(['error' => 'Invalid refresh token']);
-
+    echo json_encode(['valid' => false]);
     exit(); // 이후에 다른 출력을 방지
 }
 ?>
