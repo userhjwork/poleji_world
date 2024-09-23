@@ -24,7 +24,11 @@ while ($row = $result->fetch_assoc()) {
     $stmt = $conn->prepare($sql);
     
     if ($stmt === false) {
-        die('Prepare failed: ' . $conn->error);
+        echo json_encode([
+            '구문오류' => ': '.$conn->error
+        ]);
+        
+        die();
     }
     
     $stmt->bind_param('ssi', $u_id, $refresh_token, $refresh_expiry);
@@ -41,7 +45,7 @@ while ($row = $result->fetch_assoc()) {
         exit(); // 이후에 다른 출력을 방지
     } else {
         echo json_encode([
-            'status' => '실행실패'.$stmt->error.'.'
+            'status' => '토큰발급실패'.$stmt->error.'.'
         ]);
 
         exit(); // 이후에 다른 출력을 방지

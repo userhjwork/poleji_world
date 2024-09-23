@@ -14,6 +14,7 @@ $conn = connectToDB();
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/css/common.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/js/common.js"></script>
+    <script src="https://poleji.cafe24.com/home/just_login/js/common.js"></script>
 </head>
 <body>
     <div class="wrap">

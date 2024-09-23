@@ -110,7 +110,6 @@ $conn = connectToDB();
                 } else {
                     alert('다시 로그인해주십시오');
                 }
-
             });
         });
     </script>

@@ -16,6 +16,7 @@ $conn = connectToDB();
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/css/common.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/js/common.js"></script>
+    <script src="https://poleji.cafe24.com/home/just_login/js/common.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -56,7 +57,7 @@ $conn = connectToDB();
     <script>
         
         $(document).ready(function(){
-
+            let rt = localStorage.getItem('refresh_token');
         })
 
         // 로그인
@@ -67,11 +68,6 @@ $conn = connectToDB();
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-
-            console.log(JSON.stringify({
-                    username: username,
-                    password: password
-                }));
 
             // 요청
             fetch('login.php', {
@@ -87,16 +83,44 @@ $conn = connectToDB();
             .then(response => response.json())
             .then(data => {
                 if (data.valid) {
-                    alert(username+'님 반갑습니다');
-                    console.log(data);
+
+
                     
-                    // 페이지 리디렉션
-                    window.location.href = './dashboard.php';
+                    fetch('token_create.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: username
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.refresh_token) {
+                            console.log(data);
+                            localStorage.setItem('refresh_token', data.refresh_token);
+                            
+                            // 페이지 리디렉션
+                            
+                            
+                            alert(username+'님 반갑습니다');
+                            window.location.href = './dashboard.php';
+                        } else {
+                            alert('리프레시토큰 발급실패');
+                        }
+
+                    });
+
+                    
+
                 } else {
                     alert('아이디 또는 비밀번호가 일치하지 않습니다. \n다시 시도해주세요.');
                 }
 
             });
+
+            
         });
     </script>
 </body>

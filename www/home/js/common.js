@@ -1,3 +1,8 @@
+function login(username, password) {
+    
+}
+
+
 function check_token(location='') {
      // 토큰 유효성 확인 절차
      let accessToken = localStorage.getItem('access_token');
