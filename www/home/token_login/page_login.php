@@ -103,7 +103,7 @@ $conn = connectToDB();
                     localStorage.setItem('access_token', data.access_token);
                     localStorage.setItem('refresh_token', data.refresh_token);
                     alert('Login successful!');
-                    console.log(data);
+                    console.log(data);0
                     
                     // 페이지 리디렉션
                     location.href = './dashboard.php';
