@@ -2,31 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>대구동부교회 바울 새가족부 메인</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <title>nonamed_map</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/normalize.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/common.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/main.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/newfriend/assets/js/script.js"></script>
-<?php
-include('./php/connect_db.php')
-?>    
-    <?php
-
-    $sql = "SELECT * FROM tbl_church_out";
-    $result_sql = $conn->query($sql);
-    if ($result_sql->num_rows > 0) {
-        while ($row_sql = $result_sql->fetch_assoc()) {
-            echo "<pre>";
-            print_r($row_sql);
-            echo "</pre>";
-        } 
-    }
-    ?>
-
+    
 
     <style type="text/css">
         
@@ -34,22 +20,3 @@ include('./php/connect_db.php')
     </style>
 </head>
 <body>
-    <div class="wrap">
-
-
-    </div>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script type="text/javascript">
-
-
-
-
-
-
-</script>
-
-
-</body>
-</html>
