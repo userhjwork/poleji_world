@@ -6,43 +6,38 @@
     <title>대구동부교회 바울 새가족부 메인</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- 달력 스타일 -->
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/normalize.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/common.css">
-    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/main.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/main.css"> 
+    
+
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/newfriend/assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> <!-- 달력 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script> <!-- 달력 스크립트 -->
 <?php
-include('./php/connect_db.php')
-?>    
-    <?php
-    $today = date("Y-m-d");
 
-    $selected_val = '정기지출';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
+include('./php/connect_db.php');
 
-    $sql = "SELECT * FROM tbl_church_out_ctgry";
-    $result_sql = $conn->query($sql);
-    if ($result_sql->num_rows > 0) {
-        while ($row_sql = $result_sql->fetch_assoc()) {
-            // echo "<pre>";
-            // print_r($row_sql);
-            // echo "</pre>";
-        } 
-    }
+$today = date("Y-m-d");
+?>
 
-    $sql_ctgry_1 = "SELECT ctgry_1 FROM tbl_church_out_ctgry GROUP BY ctgry_1 ORDER BY ctgry_id";
-    $ctgry_1_option = '';
-    $result_sql_ctgry_1 = $conn->query($sql_ctgry_1);
-    if ($result_sql_ctgry_1->num_rows > 0) {
-        while ($row_sql_ctgry_1 = $result_sql_ctgry_1->fetch_assoc()) {
-            $ctgry_1 = $row_sql_ctgry_1['ctgry_1'];
-            $selected = ($ctgry_1 === $selected_val) ? ' selected' : '';
-            $ctgry_1_option .= "<option value=\"".$row_sql_ctgry_1['ctgry_1']."\"$selected>".$row_sql_ctgry_1['ctgry_1']."</option>";
-        } 
-    }
-    ?>
+<script>
+    let ctgryData = {};
 
-    
+    $(function(){
+        $.getJSON('./php/get_ctgry_all.php', function (data) {
+            ctgryData = data;
+        
+            console.log(data);
+            renderCtgry1(); // 1차 항목 먼저 렌더링
+        });
+    })
+</script>
 </head>
 <body>
     <div class="wrap">
@@ -58,9 +53,7 @@ include('./php/connect_db.php')
                             </div>
                             <div class="select_wrap">
                                 <select name="" id="chr_ctgry_1">
-                                    <?php 
-                                    echo $ctgry_1_option;
-                                    ?>
+                                    <option value="none">선택</option>
                                 </select>
                             </div>
                         </div>
@@ -82,6 +75,7 @@ include('./php/connect_db.php')
                                 <select name="" id="chr_ctgry_3">
                                     <option value="none">선택</option>
                                 </select>
+                                <span class="desc" id="chr_ctgry_3_desc"></span>
                             </div>
                         </div>
                     </div>
@@ -136,6 +130,12 @@ include('./php/connect_db.php')
                         </div>
                     </div>
                 </div>
+                <div class="button_pop">
+                    <button type="button" class="btn_basic btn_bottom" id="btn_submit">
+                        <span class="text">지출내역 작성완료</span>
+                    </button>
+                </div>
+                <button type="button" id="go_list">지출내역 리스트 보기</button>
 
             </div>
         </div>
@@ -149,37 +149,152 @@ include('./php/connect_db.php')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="text/javascript">
         
-        // ctgry_2 생성
-        $('#chr_ctgry_1').on('click', function(){
+        
+        $(function () {
+            
+            $("#chr_ctgry_3_desc").hide();
+        
+            $('#chr_ctgry_1').on('change', function () {
+                const c1 = $(this).val();
+                renderCtgry2(c1);
 
-            const selected = $(this).val();
-            $.ajax({
-                url: './php/get_ctgry_2.php',
-                type: 'GET',
-                data: { ctgry_1: selected },
-                success: function(data){
-                    $('#chr_ctgry_2').html(data);
-                    $('#chr_ctgry_3').html('<option value="">선택</option>'); // ctgry_3 초기화
-                }
+                $("#chr_ctgry_3_desc").hide();
+            });
+        
+            $('#chr_ctgry_2').on('change', function () {
+                const c1 = $('#chr_ctgry_1').val();
+                const c2 = $(this).val();
+                renderCtgry3(c1, c2);
+
+                $("#chr_ctgry_3_desc").hide();
+            });
+
+            $('#chr_ctgry_3').on('change', function () {
+                const c3_selection = $(this).find('option:selected');
+                const desc = c3_selection.attr('title') || '';
+
+                $("#chr_ctgry_3_desc").show();
+                $("#chr_ctgry_3_desc").text(desc);
             });
         });
 
-        // ctgry_3 생성
-        $('#chr_ctgry_2').on('click', function(){
-            const ctgry_1 = $('#chr_ctgry_1').val();
-            const ctgry_2 = $(this).val();
+        flatpickr("#o_pay", {
+            dateFormat: "Y-m-d", // 2024-05-21 형식
+            maxDate: "today",    // 오늘까지 선택 가능 (원하는 경우)
+            locale: "ko" // 한국어 (선택사항)
+        });
+
+        flatpickr("#o_reward", {
+            dateFormat: "Y-m-d", // 2024-05-21 형식
+            maxDate: "today",    // 오늘까지 선택 가능 (원하는 경우)
+            locale: "ko" // 한국어 (선택사항)
+        });
+
+        $("#go_list").click(function(){
+            window.location.href = './index_history.php'
+        })
+        
+
+
+
+
+
+        $('#o_amount').on('input', function () {
+            let val = $(this).val().replace(/[^0-9]/g, ''); // 숫자만 추출
+            if (val === '') {
+                $(this).val('');
+                return;
+            }
+            $(this).val(Number(val).toLocaleString()); // 쉼표 붙이기
+        });
+        
+
+
+
+
+        function renderCtgry1() {
+            let html = '<option value="">선택</option>';
+            Object.keys(ctgryData).forEach(c1 => {
+                html += `<option value="${c1}">${c1}</option>`;
+            });
+            $('#chr_ctgry_1').html(html);
+            $('#chr_ctgry_2').html('<option value="">선택</option>');
+            $('#chr_ctgry_3').html('<option value="">선택</option>');
+        }
+        
+        function renderCtgry2(ctgry_1) {
+            const ctgry2 = ctgryData[ctgry_1] || {};
+            let html = '<option value="">선택</option>';
+            Object.keys(ctgry2).forEach(c2 => {
+                html += `<option value="${c2}">${c2}</option>`;
+            });
+            $('#chr_ctgry_2').html(html);
+            $('#chr_ctgry_3').html('<option value="">선택</option>');
+        }
+        
+        function renderCtgry3(ctgry_1, ctgry_2) {
+            const ctgry3List = (ctgryData[ctgry_1] && ctgryData[ctgry_1][ctgry_2]) || [];
+            let html = '<option value="">선택</option>';
+            ctgry3List.forEach(item => {
+                html += `<option value="${item.name}" title="${item.desc}">${item.name}</option>`;
+            });
+            $('#chr_ctgry_3').html(html);
+        }
+
+        $("#btn_submit").click(function(){
+            const ctgry_1 = $("#chr_ctgry_1").val();
+            const ctgry_2 = $("#chr_ctgry_2").val();
+            const ctgry_3 = $("#chr_ctgry_3").val();
+            const o_pay = $("#o_pay").val();
+            const o_reward = $("#o_reward").val();
+            const o_amount = $("#o_amount").val();
+            const o_description = $("#o_description").val();
+
+            let rawAmount = o_amount.replace(/,/g, '').trim();
+        
+            // === 유효성 검사 ===
+            if (!ctgry_1 || ctgry_1 === "none") {
+                alert("1차 항목을 선택해 주세요.");
+                return;
+            }
+            if (!ctgry_2 || ctgry_2 === "none") {
+                alert("2차 항목을 선택해 주세요.");
+                return;
+            }
+            if (!ctgry_3 || ctgry_3 === "none") {
+                alert("3차 항목을 선택해 주세요.");
+                return;
+            }
+            if (!o_pay.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                alert("결제일시는 YYYY-MM-DD 형식으로 입력해 주세요.");
+                return;
+            }
+            if (o_reward && !o_reward.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                alert("지원일시가 올바른 형식이 아닙니다.");
+                return;
+            }
+            if (rawAmount && !/^\d+(\.\d+)?$/.test(rawAmount)) {
+                alert("지원금액은 숫자만 입력 가능합니다.");
+                return;
+            }
+        
+            // === 전송 ===
             $.ajax({
-                url: './php/get_ctgry_3.php',
-                type: 'GET',
+                url: './php/insert_out.php',
+                type: 'POST',
                 data: {
-                    ctgry_1: ctgry_1,
-                    ctgry_2: ctgry_2
+                    ctgry_1, ctgry_2, ctgry_3,
+                    o_pay, o_reward, o_amount, o_description
                 },
-                success: function(data){
-                    $('#chr_ctgry_3').html(data);
+                success: function(res){
+                    alert("지출내역이 저장되었습니다.");
+                    resetInputs(); // 성공 시 폼 초기화
+                },
+                error: function(err){
+                    alert("저장 실패: " + err.responseText);
                 }
             });
-        });
+        })
 
 
     </script>

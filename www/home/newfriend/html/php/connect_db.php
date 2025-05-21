@@ -10,10 +10,12 @@ $conn = mysqli_connect($servername, $username, $password);
 // // 연결 확인
 if ($conn->connect_error) {
     die("MySQL 연결 실패: " . $conn->connect_error);
-} else {
-    echo '<script>';
-    echo 'console.log("성공")';
-    echo '</script>';
 }
+
 mysqli_select_db($conn, $dbname);
+
+// 만약 JSON 요청이 아니라면 콘솔 출력
+if (!(isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false)) {
+    echo '<script>console.log("DB 연결 성공")</script>';
+}
 ?>

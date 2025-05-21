@@ -9,6 +9,12 @@ include('./php/connect_db.php');
     $result_sql = $conn->query($sql);
     
     ?>
+    <style>
+        table th,
+        table td{
+            border: 1px solid #ddd;
+        }
+    </style>
     <div class="wrap">
         <div class="header"></div>
         <div class="body">
@@ -16,68 +22,41 @@ include('./php/connect_db.php');
                 search area
             </div>
             <div class="content">
-                <ul class="li_basic">
+                <h2>지출내역 리스트</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>날짜</th>
+                      <th>1차항목</th>
+                      <th>2차항목</th>
+                      <th>3차항목</th>
+                      <th>지원금액</th>
+                      <th>상세설명</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <?php
-                    if ($result_sql->num_rows > 0) {
-                        while ($row_sql = $result_sql->fetch_assoc()) {
-
-                            $o_idx = $row_sql['o_idx'];
-
-                            $ctgry_1 = $row_sql['ctgry_1'];
-                            $ctgry_2 = $row_sql['ctgry_2'];
-                            $ctgry_3 = $row_sql['ctgry_3'];
-
-                            $o_pay = $row_sql['o_pay'];
-                            $o_reward = $row_sql['o_reward'];
-
-                            $o_amount = $row_sql['o_amount'];
-
-                            $o_description = $row_sql['o_description'];
-                    ?>
-                    <li>
-                        <div class="li_box">
-                            <div class="li_con" o_idx="">
-
-                                
-                                <div class="top_area">
-                                    <!-- 항목 -->
-                                    <div class="category_wrap">
-                                        <span class="category c_01"><?= $ctgry_1 ?></span>
-                                        <span class="category c_02"><?= $ctgry_2 ?></span>
-                                        <span class="category c_03"><?= $ctgry_3 ?></span>
-                                    </div>
-                                    <div class="amount_wrap">
-                                        <span class="amount"><?= $o_amount ?></span>
-                                    </div>
-                                </div>
-
-                                <div class="bottom_area">
-                                    <div class="pay_wrap">
-                                        <div class="object_wrap">
-                                            <div class="object">
-                                                <span class="key">결제일</span>
-                                                <span class="val"><?= $o_pay ?></span>
-                                            </div>
-                                            <div class="object">
-                                                <span class="key">지급일</span>
-                                                <span class="val"><?= $o_reward ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="dtl_wrap">
-                                        <textarea name="" id="" class="o_description" readonly><?= $o_description ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <?php
-                        } 
+              
+                    $sql = "SELECT o_pay, ctgry_1, ctgry_2, ctgry_3, o_amount, o_description FROM tbl_church_out ORDER BY o_pay DESC";
+                    $result = $conn->query($sql);
+              
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['o_pay']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['ctgry_1']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['ctgry_2']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['ctgry_3']) . "</td>";
+                            echo "<td>" . (is_numeric($row['o_amount']) ? number_format($row['o_amount']) . '원' : '-') . "</td>";
+                            echo "<td>" . nl2br(htmlspecialchars($row['o_description'])) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6'>지출내역이 없습니다.</td></tr>";
                     }
                     ?>
-                    
-                </ul>
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>
