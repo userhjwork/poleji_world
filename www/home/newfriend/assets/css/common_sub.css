@@ -1,3 +1,87 @@
-.li_basic{
-    
+.tbl_basic th,
+.tbl_basic td{
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.tbl_basic th{
+    text-align: center;
+    background-color: #e3e3e3;
+    border: 1px solid #bdbdbd;
+}
+
+.tbl_basic tr:hover td{
+    background: var(--main_color_bgL);
+}
+
+.tbl_basic td{
+    font-size: 15px;
+    color: #666;
+}
+
+.content.style_1{
+    padding: 15px;
+}
+
+.a_right{
+    text-align: right;
+}
+.a_center{
+    text-align: center;
+}
+.a_left{
+    text-align: left;
+}
+
+.list_basic .list_row{
+    padding-top: 15px;
+}
+
+.list_basic .list_row .list_cell{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.content .btn_basic{
+    padding: 6px 8px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+}
+
+.list_cell .amount_wrap{
+    display: block;
+    text-align: right;
+    padding: 10px 0 8px;
+}
+
+.list_cell .amount_wrap .amount{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--main_color);
+}
+
+.list_cell .desc_wrap{
+    padding: 15px;
+    background-color: #f1f1f1;
+}
+
+.list_cell .date_wrap{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.list_cell .date_wrap .date{
+    display: block;
+    padding: 5px 12px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 20px;
+}
+
+.list_cell .date_wrap .date.o_reward{
+    margin-left: 6px;
+    background-color: var(--main_color_dark);
 }
