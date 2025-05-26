@@ -10,31 +10,33 @@ include('./php/connect_db.php');
 
     $list_html = '';
 
-    $sql = "SELECT o_pay, ctgry_1, ctgry_2, ctgry_3, o_amount, o_reward, o_description FROM tbl_church_out ORDER BY o_pay DESC";
+    $sql = "SELECT o_idx, o_pay, ctgry_1, ctgry_2, ctgry_3, o_amount, o_reward, o_description FROM tbl_church_out ORDER BY o_pay DESC";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
 
             $list_html .= "<li class=\"list_row\">";
-            $list_html .= "    <div class=\"list_cell\">";
-            $list_html .= "        <div class=\"list_cell_title\">";
-            $list_html .= "            <div class=\"date_wrap\">";
-            $list_html .= "                <span class=\"date o_pay data_cell\">" . htmlspecialchars($row['o_pay']) . "</span>";
-            $list_html .= "                <span class=\"date o_reward\">" . htmlspecialchars($row['o_reward']) . "</span>";
+            $list_html .= "    <button type=\"button\" class=\"list_cell_wrap\" o_idx=\"". htmlspecialchars($row['o_idx']) ."\">";
+            $list_html .= "        <div class=\"list_cell\">";
+            $list_html .= "            <div class=\"list_cell_title\">";
+            $list_html .= "                <div class=\"date_wrap\">";
+            $list_html .= "                    <span class=\"date o_pay data_cell\">" . htmlspecialchars($row['o_pay']) . "</span>";
+            $list_html .= "                    <span class=\"date o_reward\">" . htmlspecialchars($row['o_reward']) . "</span>";
+            $list_html .= "                </div>";
+            $list_html .= "                <span class=\"ctgry data_cell\"><span class=\"text ctgry_1\">" . htmlspecialchars($row['ctgry_1']) . "</span> - <span class=\"text ctgry_2\">" . htmlspecialchars($row['ctgry_2']) . "</span> - <span class=\"text strong ctgry_3\">" . htmlspecialchars($row['ctgry_3']) . "</span>";
             $list_html .= "            </div>";
-            $list_html .= "            <span class=\"ctgry data_cell\"><span class=\"text ctgry_1\">" . htmlspecialchars($row['ctgry_1']) . "</span> - <span class=\"text ctgry_2\">" . htmlspecialchars($row['ctgry_2']) . "</span> - <span class=\"text strong ctgry_3\">" . htmlspecialchars($row['ctgry_3']) . "</span>";
+            $list_html .= "            <div class=\"list_cell_content\">";
+            $list_html .= "                <div class=\"amount_wrap\">";
+            $list_html .= "                    <span class=\"amount data_cell\">" . (is_numeric($row['o_amount']) ? number_format($row['o_amount']) : '-') . "</span>";
+            $list_html .= "                    <span class=\"text\">원</span>";
+            $list_html .= "                </div>";
+            $list_html .= "                <div class=\"desc_wrap\">";
+            $list_html .= "                    <span class=\"desc data_cell\">" . nl2br(htmlspecialchars($row['o_description'])) . "</span>";
+            $list_html .= "                </div>";
+            $list_html .= "            </div>";
             $list_html .= "        </div>";
-            $list_html .= "        <div class=\"list_cell_content\">";
-            $list_html .= "            <div class=\"amount_wrap\">";
-            $list_html .= "                <span class=\"amount data_cell\">" . (is_numeric($row['o_amount']) ? number_format($row['o_amount']) : '-') . "</span>";
-            $list_html .= "                <span class=\"text\">원</span>";
-            $list_html .= "            </div>";
-            $list_html .= "            <div class=\"desc_wrap\">";
-            $list_html .= "                <span class=\"desc data_cell\">" . nl2br(htmlspecialchars($row['o_description'])) . "</span>";
-            $list_html .= "            </div>";
-            $list_html .= "        </div>";
-            $list_html .= "    </div>";
+            $list_html .= "    </button>";
             $list_html .= "</li>";
         }
     } else {
@@ -86,6 +88,13 @@ include('./php/connect_db.php');
         window.location.href = './index_history_table.php';
     })
 
+    $(".list_cell_wrap").click(function(){
+
+        let o_idx = $(this).attr('o_idx');
+
+        window.location.href = './index_update.php?o_idx='+o_idx;
+    })
+
     function downloadDivToExcel() {
         const rows = document.querySelectorAll('.list_row');
         const data = [];
@@ -124,6 +133,8 @@ include('./php/connect_db.php');
         XLSX.utils.book_append_sheet(wb, ws, "지출내역");
         XLSX.writeFile(wb, "지출내역_합계포함.xlsx");
     }
+
+
 
 </script>
 

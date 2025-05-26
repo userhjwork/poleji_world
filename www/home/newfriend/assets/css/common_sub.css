@@ -37,9 +37,14 @@
     padding-top: 15px;
 }
 
+.list_basic .list_row .list_cell_wrap{
+    width: 100%;
+}
+
 .list_basic .list_row .list_cell{
-    border: 1px solid #ddd;
     padding: 15px;
+    width: 100%;
+    border: 1px solid #ddd;
 }
 
 .content .btn_basic{
