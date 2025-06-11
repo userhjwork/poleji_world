@@ -2,819 +2,301 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
-    <title>nonamed_map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>대구동부교회 바울 새가족부 메인</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
-    <link rel="stylesheet" href="https://poleji.cafe24.com/home/nonamed/assets/css/normalize.css">
-    <link rel="stylesheet" href="https://poleji.cafe24.com/home/nonamed/assets/css/common.css">
-    <link rel="stylesheet" href="https://poleji.cafe24.com/home/nonamed/assets/css/main.css">
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mu8wv2w2f9"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- 달력 스타일 -->
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/common.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newfriend/assets/css/main.css"> 
+    
+
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://poleji.cafe24.com/home/nonamed/assets/js/script.js"></script>
-    <?php
-include('./php/connect_db.php')
-?>    
-    <?php
+    <script src="https://poleji.cafe24.com/home/newfriend/assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> <!-- 달력 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script> <!-- 달력 스크립트 -->
+<?php
 
-    $sql = "SELECT * FROM tbl_church_out";
-    $result_sql = $conn->query($sql);
-    if ($result_sql->num_rows > 0) {
-        while ($row_sql = $result_sql->fetch_assoc()) {
-            echo "<pre>";
-            print_r($row_sql);
-            echo "</pre>";
-        } 
-    }
-    ?>
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-    <style type="text/css">
+include('./php/connect_db.php');
+
+$today = date("Y-m-d");
+?>
+
+<script>
+    let ctgryData = {};
+
+    $(function(){
+        $.getJSON('./php/get_ctgry_all.php', function (data) {
+            ctgryData = data;
         
-        
-    </style>
+            console.log(data);
+            renderCtgry1(); // 1차 항목 먼저 렌더링
+        });
+    })
+</script>
 </head>
 <body>
     <div class="wrap">
+        <div class="header">
+        </div>
+        <div class="body">
+            <div class="container input_ctgry">
+                <div class="select_wrap">
+                    <div class="select_container select_basic">
+                        <div class="input_con">
+                            <div class="title_wrap">
+                                <span class="title">1차항목</span>
+                            </div>
+                            <div class="select_wrap">
+                                <select name="" id="chr_ctgry_1">
+                                    <option value="none">선택</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input_con">
+                            <div class="title_wrap">
+                                <span class="title">2차항목</span>
+                            </div>
+                            <div class="select_wrap">
+                                <select name="" id="chr_ctgry_2">
+                                    <option value="none">선택</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input_con">
+                            <div class="title_wrap">
+                                <span class="title">3차항목</span>
+                            </div>
+                            <div class="select_wrap">
+                                <select name="" id="chr_ctgry_3">
+                                    <option value="none">선택</option>
+                                </select>
+                                <span class="desc" id="chr_ctgry_3_desc"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input_container">
+                        <div class="date_wrap pay input_con">
+                            <div class="title_wrap">
+                                <span class="title">결제일시</span>
+                                <span class="sub_title">필요금액 결제 및 구매 일시</span>
+                            </div>
+                            <div class="input_date">
+                                <div class="input_wrap">
+                                    <input type="text" id="o_pay" inputmode="numeric" value="<?= $today ?>">
+                                </div>
+                            </div>
+                        </div>
 
-        <div id="logo">
-            <div class="img_wrap">
-                <img src="https://poleji.cafe24.com/home/nonamed/assets/img/logo_dgeic_nature.png" alt="환경자원사업소 로고">
+                        <div class="date_wrap pay input_con">
+                            <div class="title_wrap">
+                                <span class="title">지원일시</span>
+                                <span class="sub_title">결제 당사자에게 지원 금액 전달 일시</span>
+                            </div>
+                            <div class="input_date">
+                                <div class="input_wrap">
+                                    <input type="text" id="o_reward" inputmode="numeric" value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input_con">
+                            <div class="title_wrap">
+                                <span class="title">지원금액</span>
+                                <span class="sub_title">결제금액과 지원금액이 다를 시 지원금액</span>
+                            </div>
+                            <div class="input_text flex">
+                                <div class="input_wrap">
+                                    <input type="text" id="o_amount" class="a_right" inputmode="numeric" pattern="\d*" value="">
+                                </div>
+                                <span class="text">원</span>
+                            </div>
+                        </div>
+
+                        <div class="input_con">
+                            <div class="title_wrap">
+                                <span class="title">상세설명</span>
+                            </div>
+                            <div class="input_text flex">
+                                <div class="input_wrap">
+                                    <textarea name="" id="o_description" placeholder="해당 지출내역에 대한 상세한 내역을 남겨주세요. ex) 권빅뱅리더, 동태양조원 1대1 식사"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button_pop">
+                    <button type="button" class="btn_basic btn_bottom" id="btn_submit">
+                        <span class="text">지출내역 작성완료</span>
+                    </button>
+                </div>
+                <button type="button" id="go_list">지출내역 리스트 보기</button>
+
             </div>
         </div>
+        <div class="footer">
 
-        <div class="option_wrap">
-            <div class="weather_info">
-                <div class="title_wrap">
-                    <span class="title">기상정보</span>
-                    <div class="date_wrap">
-                        <span class="date">2023-12-14</span>
-                        <span class="time">13시</span>
-                    </div>
-                </div>
-                <ul class="con_wrap">
-                    <li>
-                        <span class="icon temp">9.5</span>
-                        <span class="unit">℃</span>
-                    </li>
-                    <li>
-                        <span class="icon rain">77</span>
-                        <span class="unit">%</span>
-                    </li>
-                    <li>
-                        <span class="icon dirc">북동</span>
-                        <span class="unit"></span>
-                    </li>
-                    <li>
-                        <span class="icon wind">2.3</span>
-                        <span class="unit">㎧</span>
-                    </li>
-                    <li>
-                        <span class="icon speed">1014</span>
-                        <span class="unit"></span>
-                    </li>
-                </ul>
-            </div>
         </div>
 
-        <button id="report_stink" class="fixed_btn btn_basic warning" onclick="document.location.href='tel:053-605-6960'">악취민원접수</button>
-        
 
-        <button id="restored">독도로가</button>
-
-        <!-- <div class="main_wrap"> -->
-
-            <!-- 매우좋음 -->
-            <!-- <div class="fixed_icon" id="oms_1">
-                <div class="icon_wrap">
-                    <button type="button" class="icon perfect">
-                        <span class="icon_text">매우좋음</span>
-                    </button>
-                    <div class="pstn_info_wrap">
-                        <div class="pstn_info">
-                            <h5 class="title">OMS #1</h5>
-                            <ul class="pstn_list">
-                                <li>
-                                    <span class="title">복합악취</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value strong">3</span>
-                                        <span class="con_unit">배수</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">메틸머캅탄</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0000</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">황화수소</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0016</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">암모니아</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0078</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stinking_time">
-                            <span class="text">복합악취 시간초과</span>
-                            <span class="icon no_text"></span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- 좋음 -->
-            <!-- <div class="fixed_icon" id="oms_2">
-                <div class="icon_wrap">
-                    <button type="button" class="icon good">
-                        <span class="icon_text">좋음</span>
-                    </button>
-                    <div class="pstn_info_wrap">
-                        <div class="pstn_info">
-                            <h5 class="title">OMS #2</h5>
-                            <ul class="pstn_list">
-                                <li>
-                                    <span class="title">복합악취</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value strong">3</span>
-                                        <span class="con_unit">배수</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">메틸머캅탄</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0000</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">황화수소</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0016</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">암모니아</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0078</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stinking_time">
-                            <span class="text">복합악취 시간초과</span>
-                            <span class="icon no_text"></span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- 보통 -->
-            <!-- <div class="fixed_icon" id="oms_3">
-                <div class="icon_wrap">
-                    <button type="button" class="icon soso">
-                        <span class="icon_text">보통</span>
-                    </button>
-                    <div class="pstn_info_wrap">
-                        <div class="pstn_info">
-                            <h5 class="title">OMS #3</h5>
-                            <ul class="pstn_list">
-                                <li>
-                                    <span class="title">복합악취</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value strong">3</span>
-                                        <span class="con_unit">배수</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">메틸머캅탄</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0000</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">황화수소</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0016</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">암모니아</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0078</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stinking_time">
-                            <span class="text">복합악취 시간초과</span>
-                            <span class="icon no_text"></span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- 나쁨 -->
-            <!-- <div class="fixed_icon" id="oms_4">
-                <div class="icon_wrap">
-                    <button type="button" class="icon bad">
-                        <span class="icon_text">나쁨</span>
-                    </button>
-                    <div class="pstn_info_wrap">
-                        <div class="pstn_info">
-                            <h5 class="title">OMS #4</h5>
-                            <ul class="pstn_list">
-                                <li>
-                                    <span class="title">복합악취</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value strong">3</span>
-                                        <span class="con_unit">배수</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">메틸머캅탄</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0000</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">황화수소</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0016</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">암모니아</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0078</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stinking_time">
-                            <span class="text">복합악취 시간초과</span>
-                            <span class="icon no_text"></span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- 매우나쁨 -->
-            <!-- <div class="fixed_icon" id="oms_5">
-                <div class="icon_wrap">
-                    <button type="button" class="icon trash">
-                        <span class="icon_text">매우나쁨</span>
-                    </button>
-                    <div class="pstn_info_wrap">
-                        <div class="pstn_info">
-                            <h5 class="title">OMS #5</h5>
-                            <ul class="pstn_list">
-                                <li>
-                                    <span class="title">복합악취</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value strong">3</span>
-                                        <span class="con_unit">배수</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">메틸머캅탄</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0000</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">황화수소</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0016</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="title">암모니아</span>
-                                    <div class="con_wrap">
-                                        <span class="con_value">0.0078</span>
-                                        <span class="con_unit">ppm</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stinking_time">
-                            <span class="text">복합악취 시간초과</span>
-                            <span class="icon no_text"></span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-        <!-- </div> -->
-
-
-        
-        <div id="map"></div>
-        <div id="restoreMap"></div>
     </div>
 
-    
-<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID&submodules=geocoder"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="text/javascript">
+        
+        
+        $(function () {
+            
+            $("#chr_ctgry_3_desc").hide();
+        
+            $('#chr_ctgry_1').on('change', function () {
+                const c1 = $(this).val();
+                renderCtgry2(c1);
 
-<script type="text/javascript">
-    
-var HOME_PATH = window.HOME_PATH || '.';
+                $("#chr_ctgry_3_desc").hide();
+            });
+        
+            $('#chr_ctgry_2').on('change', function () {
+                const c1 = $('#chr_ctgry_1').val();
+                const c2 = $(this).val();
+                renderCtgry3(c1, c2);
 
-var obj_json_result;
+                $("#chr_ctgry_3_desc").hide();
+            });
 
-var obj_json_result;
-var markers = [],
-    infoWindows = [];
-    currentMarkers = [];
-    
-var start_position_x = 0;
-var start_position_y = 0;
+            $('#chr_ctgry_3').on('change', function () {
+                const c3_selection = $(this).find('option:selected');
+                const desc = c3_selection.attr('title') || '';
 
-
-
-
-
-// $.getJSON("../assets/data/sample.json", function(json) {
-//     let data_result = json.positions;
-
-//     let zoom = json.map_zoom;
-//     let map_center_x = json.map_center_x;
-//     let map_center_y = json.map_center_y;
-//     var map = new naver.maps.Map('map', {
-//         center: new naver.maps.LatLng(map_center_y, map_center_x),
-//         zoom: zoom,
-//         scaleControl: false,     // 축척 표시    
-//         logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
-//         mapDataControl: true,   // 저작권
-//         // zoomControl: false,
-//         // zoomControlOptions: {
-//         //     position: naver.maps.Position.RIGHT_CENTER
-//         // },
-//         draggable: false,
-//         pinchZoom: false,
-//         // scrollWheel: false,
-//         keyboardShortcuts: false,
-//         disableDoubleTapZoom: true,
-//         disableDoubleClickZoom: true,
-//         disableTwoFingerTapZoom: true,
-    
-//         mapTypeId: naver.maps.MapTypeId.SATELLITE,  // 기본지도 위성으로 설정
-//         mapTypeControl: false,    // 일반, 위성
-//         mapTypeControlOptions: {
-//             style: naver.maps.MapTypeControlStyle.BUTTON,
-//             position: naver.maps.Position.TOP_RIGHT
-//         },
-//     });
-// });
-
-
-
-    
-
-
-
-
-
-// sample data 가져오기
-$.getJSON("../assets/data/sample.json", function(json) {
-    let data_position = json.positions;
-
-    let zoom = json.map_zoom;
-    let map_center_x = json.map_center_x;
-    let map_center_y = json.map_center_y;
-
-    var map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(map_center_y, map_center_x),
-        zoom: zoom,
-        scaleControl: false,     // 축척 표시    
-        logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
-        mapDataControl: true,   // 저작권
-        // zoomControl: false,
-        // zoomControlOptions: {
-        //     position: naver.maps.Position.RIGHT_CENTER
-        // },
-        draggable: false,
-        pinchZoom: false,
-        // scrollWheel: false,
-        keyboardShortcuts: false,
-        disableDoubleTapZoom: true,
-        disableDoubleClickZoom: true,
-        disableTwoFingerTapZoom: true,
-    
-        mapTypeId: naver.maps.MapTypeId.SATELLITE,  // 기본지도 위성으로 설정
-        mapTypeControl: false,    // 일반, 위성
-        mapTypeControlOptions: {
-            style: naver.maps.MapTypeControlStyle.BUTTON,
-            position: naver.maps.Position.TOP_RIGHT
-        },
-    });
-    
-    var drawingManager;
-    naver.maps.Event.once(map, 'init', function () {
-        drawingManager = new naver.maps.drawing.DrawingManager({
-            map: map,
-            polygonOptions: {
-                fillColor: '#ffc300',
-                fillOpacity: 0.5,
-                strokeWeight: 3,
-                strokeColor:'#ffc300'
-            }
+                $("#chr_ctgry_3_desc").show();
+                $("#chr_ctgry_3_desc").text(desc);
+            });
         });
-    });
-    
-    var restoreMap = new naver.maps.Map('restoreMap', {
-        center: new naver.maps.LatLng(map_center_y, map_center_x),
-        zoom: zoom,
-        scaleControl: false,     // 축척 표시    
-        logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
-        mapDataControl: true,   // 저작권
-        // zoomControl: false,
-        // zoomControlOptions: {
-        //     position: naver.maps.Position.RIGHT_CENTER
-        // },
-        draggable: false,
-        pinchZoom: false,
-        // scrollWheel: false,
-        keyboardShortcuts: false,
-        disableDoubleTapZoom: true,
-        disableDoubleClickZoom: true,
-        disableTwoFingerTapZoom: true,
-    
-        mapTypeId: naver.maps.MapTypeId.SATELLITE,  // 기본지도 위성으로 설정
-        mapTypeControl: false,    // 일반, 위성
-        mapTypeControlOptions: {
-            style: naver.maps.MapTypeControlStyle.BUTTON,
-            position: naver.maps.Position.TOP_RIGHT
-        },
-    });
 
-    let arr_poly = [];
+        flatpickr("#o_pay", {
+            dateFormat: "Y-m-d", // 2024-05-21 형식
+            maxDate: "today",    // 오늘까지 선택 가능 (원하는 경우)
+            locale: "ko" // 한국어 (선택사항)
+        });
 
-    data_position.forEach(function(e, num){
+        flatpickr("#o_reward", {
+            dateFormat: "Y-m-d", // 2024-05-21 형식
+            maxDate: "today",    // 오늘까지 선택 가능 (원하는 경우)
+            locale: "ko" // 한국어 (선택사항)
+        });
 
-        console.log(geojson);
-        let oms_id = e.oms_id;
-
-        let adr = e.oms_adr;
-        let oms_x = e.oms_x;   // 경도
-        let oms_y = e.oms_y;   // 위도
-        
-        let stts = e.stts;     // 매우좋음 ~ 매우나쁨
-
-        let stink = e.stink;   // 복합악취
-        let ch3sh = e.ch3sh;   // 메틸머캅탄
-        let h2s = e.h2s;       // 황화수소
-        let nh3 = e.nh3;       // 암모니아
-
+        $("#go_list").click(function(){
+            window.location.href = './index_history.php'
+        })
         
 
-        let stts_cls = '';
-        let stts_txt = '';
-    
-        switch (stts) {
-            case '1':
-                stts_cls = 'perfect';
-                stts_txt = '매우좋음';
-                break;
-    
-            case '2':
-                stts_cls = 'good';
-                stts_txt = '좋음';
-                break;
-    
-            case '3':
-                stts_cls = 'soso';
-                stts_txt = '보통';
-                break;
-    
-            case '4':
-                stts_cls = 'bad';
-                stts_txt = '나쁨';
-                break;
-                
-            case '5':
-                stts_cls = 'trash';
-                stts_txt = '매우나쁨';
-                break;
+
+
+
+
+        $('#o_amount').on('input', function () {
+            let val = $(this).val().replace(/[^0-9]/g, ''); // 숫자만 추출
+            if (val === '') {
+                $(this).val('');
+                return;
+            }
+            $(this).val(Number(val).toLocaleString()); // 쉼표 붙이기
+        });
         
-            default:
-                break;
+
+
+
+
+        function renderCtgry1() {
+            let html = '<option value="">선택</option>';
+            Object.keys(ctgryData).forEach(c1 => {
+                html += `<option value="${c1}">${c1}</option>`;
+            });
+            $('#chr_ctgry_1').html(html);
+            $('#chr_ctgry_2').html('<option value="">선택</option>');
+            $('#chr_ctgry_3').html('<option value="">선택</option>');
+        }
+        
+        function renderCtgry2(ctgry_1) {
+            const ctgry2 = ctgryData[ctgry_1] || {};
+            let html = '<option value="">선택</option>';
+            Object.keys(ctgry2).forEach(c2 => {
+                html += `<option value="${c2}">${c2}</option>`;
+            });
+            $('#chr_ctgry_2').html(html);
+            $('#chr_ctgry_3').html('<option value="">선택</option>');
+        }
+        
+        function renderCtgry3(ctgry_1, ctgry_2) {
+            const ctgry3List = (ctgryData[ctgry_1] && ctgryData[ctgry_1][ctgry_2]) || [];
+            let html = '<option value="">선택</option>';
+            ctgry3List.forEach(item => {
+                html += `<option value="${item.name}" title="${item.desc}">${item.name}</option>`;
+            });
+            $('#chr_ctgry_3').html(html);
         }
 
-        let chk_tm = (e.chk_tm == '0')? '': 'time_over';
-        let chk_tm_txt = (e.chk_tm == '0')? '정상': '시간초과';
+        $("#btn_submit").click(function(){
+            const ctgry_1 = $("#chr_ctgry_1").val();
+            const ctgry_2 = $("#chr_ctgry_2").val();
+            const ctgry_3 = $("#chr_ctgry_3").val();
+            const o_pay = $("#o_pay").val();
+            const o_reward = $("#o_reward").val();
+            const o_amount = $("#o_amount").val();
+            const o_description = $("#o_description").val();
 
+            let rawAmount = o_amount.replace(/,/g, '').trim();
         
-
+            // === 유효성 검사 ===
+            if (!ctgry_1 || ctgry_1 === "none") {
+                alert("1차 항목을 선택해 주세요.");
+                return;
+            }
+            if (!ctgry_2 || ctgry_2 === "none") {
+                alert("2차 항목을 선택해 주세요.");
+                return;
+            }
+            if (!ctgry_3 || ctgry_3 === "none") {
+                alert("3차 항목을 선택해 주세요.");
+                return;
+            }
+            if (!o_pay.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                alert("결제일시는 YYYY-MM-DD 형식으로 입력해 주세요.");
+                return;
+            }
+            if (o_reward && !o_reward.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                alert("지원일시가 올바른 형식이 아닙니다.");
+                return;
+            }
+            if (rawAmount && !/^\d+(\.\d+)?$/.test(rawAmount)) {
+                alert("지원금액은 숫자만 입력 가능합니다.");
+                return;
+            }
         
-        var position = new naver.maps.LatLng(oms_y, oms_x);
-        arr_poly.push(position);
-            
-            var marker = new naver.maps.Marker({
-                position: position,
-                map: map,
-                title: 'oms_'+oms_id,
-                icon: {
-                    content: [
-                        '<div class="fixed_icon" id="oms_'+oms_id+'">',
-                        '    <div class="icon_wrap">',
-                        '        <button type="button" class="icon '+stts_cls+'">',
-                        '            <span class="icon_text">'+stts_txt+'</span>',
-                        '        </button>',
-                        '    </div>',
-                        '</div>'
-                    ].join(''),
-                    size: new naver.maps.Size(80, 80),
-                    anchor: new naver.maps.Point(40, 40),
+            // === 전송 ===
+            $.ajax({
+                url: './php/insert_out.php',
+                type: 'POST',
+                data: {
+                    ctgry_1, ctgry_2, ctgry_3,
+                    o_pay, o_reward, rawAmount, o_description
                 },
-                draggable: false
-            });
-
-            var con_info_txt = $([
-                '<div class="pstn_info_wrap">',
-                '    <div class="pstn_info">',
-                '        <h5 class="title">OMS #'+oms_id+'</h5>',
-                '        <ul class="pstn_list">',
-                '            <li>',
-                '                <span class="title">복합악취</span>',
-                '                <div class="con_wrap">',
-                '                    <span class="con_value strong">'+stink+'</span>',
-                '                    <span class="con_unit">배수</span>',
-                '                </div>',
-                '            </li>',
-                '            <li>',
-                '                <span class="title">메틸머캅탄</span>',
-                '                <div class="con_wrap">',
-                '                    <span class="con_value">'+ch3sh+'</span>',
-                '                    <span class="con_unit">ppm</span>',
-                '                </div>',
-                '            </li>',
-                '            <li>',
-                '                <span class="title">황화수소</span>',
-                '                <div class="con_wrap">',
-                '                    <span class="con_value">'+h2s+'</span>',
-                '                    <span class="con_unit">ppm</span>',
-                '                </div>',
-                '            </li>',
-                '            <li>',
-                '                <span class="title">암모니아</span>',
-                '                <div class="con_wrap">',
-                '                    <span class="con_value">'+nh3+'</span>',
-                '                    <span class="con_unit">ppm</span>',
-                '                </div>',
-                '            </li>',
-                '        </ul>',
-                '    </div>',
-                '    <div class="stinking_time '+chk_tm+'">',
-                '        <span class="text">복합악취 시간초과</span>',
-                '        <span class="icon ball no_text">'+chk_tm_txt+'<span class="inner_ball"></span></span>',
-                '    </div>',
-                '</div>'
-            ].join(''));
-
-            
-            var infowindow = new naver.maps.InfoWindow({
-                content: con_info_txt[0],
-                borderWidth: 0,
-                disableAnchor: true,
-                backgroundColor: 'transparent',
-            
-                pixelOffset: new naver.maps.Point(0, -20),
-            });
-
-            naver.maps.Event.addListener(marker, "click", function(e) {
-                if (infowindow.getMap()) {
-                    infowindow.close();
-                } else {
-                    infowindow.open(map, marker);
+                success: function(res){
+                    alert("지출내역이 저장되었습니다.");
+                    // resetInputs(); // 성공 시 폼 초기화
+                },
+                error: function(err){
+                    alert("저장 실패: " + err.responseText);
                 }
             });
-           
-
-            // markers.push(marker);
-            // infowindow.open(map, marker);
-    });
-
-    console.log('hi');
-    console.log(arr_poly);
+        })
 
 
-    var polygon = new naver.maps.Polygon({
-        map: map,
-        paths: [
-            arr_poly
-        ],
-        fillColor: '#ff0000',
-        fillOpacity: 0.3,
-        strokeColor: '#ff0000',
-        strokeOpacity: 0.6,
-        strokeWeight: 3
-    });
-
-    
-    var geojson;
-    $("#restored").on("click", function(e) {
-        e.preventDefault();
-        $("#map").hide();
-
-        if (geojson) {
-            restoreMap.data.removeGeoJson(geojson);
-            geojson = null;
-        }
-
-        geojson = drawingManager.toGeoJson();
-        restoreMap.data.addGeoJson(geojson, true);
-    });
-});
-
-
-// 주소 > 좌표 검색
-naver.maps.Service.geocode({
-    query: '대구 달성군 다사읍 다사로 822'
-    }, function(status, response) {
-    if (status !== naver.maps.Service.Status.OK) {
-        return alert('Something wrong!');
-    }
-    
-    var result = response.v2, // 검색 결과의 컨테이너
-        items = result.addresses; // 검색 결과의 배열
-    
-    // do Something
-
-    start_position_x = items[0].x;
-    start_position_y = items[0].y;
-
-    console.log(items[0]);
-
-    var position = new naver.maps.LatLng(start_position_y, start_position_x);
-
-    // var map = new naver.maps.Map('map', {
-    //     center: new naver.maps.LatLng(start_position_y, start_position_x),
-    //     zoom: 16,
-    //     scaleControl: false,     // 축척 표시    
-    //     logoControl: false,     // 네이버 로고 : 현재 없앨수 없음
-    //     mapDataControl: true,   // 저작권
-    //     zoomControl: true,
-    //     zoomControlOptions: {
-    //         position: naver.maps.Position.RIGHT_CENTER
-    //     },
-    //     mapTypeId: 'satellite',  // 기본지도 위성으로 설정
-    //     mapTypeControl: false,    // 일반, 위성
-    //     mapTypeControlOptions: {
-    //         style: naver.maps.MapTypeControlStyle.BUTTON,
-    //         position: naver.maps.Position.TOP_RIGHT
-    //     },
-    // });
-});
-
-
-// function fnShowDetail(key) {        
-
-//     // 2023.10.31 lhj
-//     $("#store_nm").attr('bzaCd', obj_json_result[key].bzaCd);
-//     $("#store_nm").text(obj_json_result[key].bzaNm);
-//     $("#store_adr").text(obj_json_result[key].adr);
-//     // 2023.10.31 lhj end
-
-//     var html = '<div class="iw_inner1" style="width:350px;position:absolute;top:10px;left:10px;z-index:1000;background-color:#fff;border:solid 1px #333;">'
-//         + '<h3>'+obj_json_result[key].bzaNm+'</h3>'
-//         + '<p style="font-size:14px;">zoom : <em class="zoom">'+ obj_json_result[key].bco +'</em></p>'
-//         + '<p style="font-size:14px;">centerPoint : <em class="center">'+ obj_json_result[key].adr +'</em></p>'
-//         + '</div>';
-
-//     var contentEl = $(html);
-
-//     contentEl.appendTo(map.getElement());
-// }
-
-// function fnCloseInfo(obj) {
-//     console.log(obj);
-// }
-
-// $(".search_select_wrap .select_sub button").click(function(){
-//     let slct_val = $(this).text();
-
-//     $(this).closest('.select_sub').prev('button.select_main').text(slct_val);
-//     $(this).closest('.select_sub').addClass('hide');
-// });
-
-
-// let arr_oms = [];
-// arr_oms.push(oms_01, oms_02, oms_03, oms_04, oms_05);
-
-// let html = '';
-// arr_oms.forEach(e => {
-
-//     let stts = e.stts;
-//     let stts_cls = '';
-//     let stts_txt = '';
-
-//     switch (stts) {
-//         case '1':
-//             stts_cls = 'perfect';
-//             stts_txt = '매우좋음';
-//             break;
-
-//         case '2':
-//             stts_cls = 'good';
-//             stts_txt = '좋음';
-//             break;
-
-//         case '3':
-//             stts_cls = 'soso';
-//             stts_txt = '보통';
-//             break;
-
-//         case '4':
-//             stts_cls = 'bad';
-//             stts_txt = '나쁨';
-//             break;
-            
-//         case '5':
-//             stts_cls = 'trash';
-//             stts_txt = '매우나쁨';
-//             break;
-    
-//         default:
-//             break;
-//     }
-
-//     let chk_tm = (e.chk_tm == '0')? '': 'time_over';
-//     let chk_tm_txt = (e.chk_tm == '0')? '정상': '시간초과';
-
-
-
-//     html += '<div class="fixed_icon" id="oms_'+e.oms_id+'">';
-//     html += '    <div class="icon_wrap">';
-//     html += '        <button type="button" class="icon '+stts_cls+'">';
-//     html += '            <span class="icon_text">'+stts_txt+'</span>';
-//     html += '        </button>';
-//     html += '        <div class="pstn_info_wrap">';
-//     html += '            <div class="pstn_info">';
-//     html += '                <h5 class="title">OMS #'+e.oms_id+'</h5>';
-//     html += '                <ul class="pstn_list">';
-//     html += '                    <li>';
-//     html += '                        <span class="title">복합악취</span>';
-//     html += '                        <div class="con_wrap">';
-//     html += '                            <span class="con_value strong">'+e.stink+'</span>';
-//     html += '                            <span class="con_unit">배수</span>';
-//     html += '                        </div>';
-//     html += '                    </li>';
-//     html += '                    <li>';
-//     html += '                        <span class="title">메틸머캅탄</span>';
-//     html += '                        <div class="con_wrap">';
-//     html += '                            <span class="con_value">'+e.ch3sh+'</span>';
-//     html += '                            <span class="con_unit">ppm</span>';
-//     html += '                        </div>';
-//     html += '                    </li>';
-//     html += '                    <li>';
-//     html += '                        <span class="title">황화수소</span>';
-//     html += '                        <div class="con_wrap">';
-//     html += '                            <span class="con_value">'+e.h2s+'</span>';
-//     html += '                            <span class="con_unit">ppm</span>';
-//     html += '                        </div>';
-//     html += '                    </li>';
-//     html += '                    <li>';
-//     html += '                        <span class="title">암모니아</span>';
-//     html += '                        <div class="con_wrap">';
-//     html += '                            <span class="con_value">'+e.nh3+'</span>';
-//     html += '                            <span class="con_unit">ppm</span>';
-//     html += '                        </div>';
-//     html += '                    </li>';
-//     html += '                </ul>';
-//     html += '            </div>';
-//     html += '            <div class="stinking_time '+chk_tm+'">';
-//     html += '                <span class="text">복합악취 시간초과</span>';
-//     html += '                <span class="icon ball no_text">'+chk_tm_txt+'<span class="inner_ball"></span></span>';
-//     html += '            </div>';
-//     html += '        </div>';
-//     html += '    </div>';
-//     html += '</div>';
-// });
-
-// $(".main_wrap").append(html);
-
-
-
-
-
-</script>
-
-
+    </script>
 </body>
 </html>
