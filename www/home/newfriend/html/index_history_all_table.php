@@ -62,21 +62,10 @@ if ($conn->multi_query($sql)) {
         $list_html .= "                <div class=\"date_wrap\"><span class=\"date data_cell\">$date_label</span></div>";
         $list_html .= "                <span class=\"ctgry data_cell\"><span class=\"text ctgry_1\">" . htmlspecialchars($row['ctgry_1']) . "</span>";
         if ($ctgry_2) $list_html .= " - <span class=\"text ctgry_2\">" . htmlspecialchars($ctgry_2) . "</span>";
-        if ($ctgry_3) $list_html .= " - <span class=\"text ctgry_3\">" . htmlspecialchars($ctgry_3) . "</span>";
+        if ($ctgry_3) $list_html .= " - <span class=\"text strong ctgry_3\">" . htmlspecialchars($ctgry_3) . "</span>";
         $list_html .= "</span></div>";
         $list_html .= "            <div class=\"list_cell_content\">";
-        $list_html .= "                <div class=\"amount_wrap\">";
-        $list_html .= "                    <div class=\"amount_box\">";
-        $list_html .= "                        <span class=\"amount data_cell\">$amount</span>";
-        $list_html .= "                        <span class=\"text\">원</span>";
-        $list_html .= "                    </div>";
-        $list_html .= "                    <div class=\"amount_box balance_wrap\">";
-        $list_html .= "                        <span class=\"text\">잔액</span>";
-        $list_html .= "                        <span class=\"balance data_cell\">" . number_format($row['balance']) . "</span>";
-        $list_html .= "                        <span class=\"text\">원</span>";
-        $list_html .= "                    </div>";
-        $list_html .= "                </div>";
-        $list_html .= "                <span class=\"type data_cell\" style=\"display:none;\">". htmlspecialchars($row['type']) ."</span>";
+        $list_html .= "                <div class=\"amount_wrap\"><span class=\"amount data_cell\">$amount</span><span class=\"text\">원</span></div>";
         $list_html .= "                <div class=\"desc_wrap\"><span class=\"desc data_cell\">" . nl2br(htmlspecialchars($row['description'])) . "</span></div>";
         $list_html .= "            </div>";
         $list_html .= "        </div>";
@@ -100,7 +89,7 @@ if ($conn->multi_query($sql)) {
                     <button type="button" id="btn_excel" class="btn_basic"><span class="text">엑셀로 저장</span></button>
                 </div>
             </div>
-            <div class="all_history">
+            <div class="list_basic out_list">
                 <ul class="list_basic">
                     <?= $list_html ?>
                 </ul>
@@ -121,45 +110,43 @@ if ($conn->multi_query($sql)) {
         window.location.href = './index_history_table.php';
     });
 
-    // $(document).on("click", ".list_cell_wrap", function() {
-    //     let idx = $(this).data('idx');
-    //     window.location.href = './index_update.php?o_idx=' + idx;
-    // });
+    $(document).on("click", ".list_cell_wrap", function() {
+        let idx = $(this).data('idx');
+        window.location.href = './index_update.php?o_idx=' + idx;
+    });
 
     function downloadDivToExcel() {
         const rows = document.querySelectorAll('.list_row');
         const data = [];
 
-        // 엑셀 헤더
-        data.push(["날짜", "유형", "카테고리", "금액", "상세설명", "누적합"]);
+        data.push(["날짜", "카테고리", "지원금액", "상세설명"]);
+
+        let total = 0;
 
         rows.forEach(row => {
-            const date = row.querySelector('.date')?.innerText.trim() || '';
-            const type = row.querySelector('.type')?.innerText.trim() || '';
-            const ctgry1 = row.querySelector('.ctgry_1')?.innerText.trim() || '';
-            const ctgry2 = row.querySelector('.ctgry_2')?.innerText.trim() || '';
-            const ctgry3 = row.querySelector('.ctgry_3')?.innerText.trim() || '';
-            
-            const amount_text = row.querySelector('.amount')?.innerText.trim() || '';
-            const amount_clean = amount_text.replace(/[^0-9\-]/g, '');
-            const amount = parseInt(amount_clean) || 0;
-            
-            const desc = row.querySelector('.desc')?.innerText.trim() || '';
+            const cells = row.querySelectorAll('.data_cell');
+            const rowData = [];
 
-            const balance_text = row.querySelector('.balance')?.innerText.trim() || '';
-            const balance_clean = balance_text.replace(/[^0-9\-]/g, '');
-            const balance = parseInt(balance_clean) || 0;
+            cells.forEach((cell, index) => {
+                let text = cell.innerText.trim();
+                if (index === 2) {
+                    let num = parseInt(text.replace(/[^0-9]/g, ''));
+                    if (!isNaN(num)) total += num;
+                    rowData.push(text);
+                } else {
+                    rowData.push(text);
+                }
+            });
 
-            const ctgry = [ctgry1, ctgry2, ctgry3].filter(Boolean).join(" - ");
-
-            data.push([date, type, ctgry, amount, desc, balance]);
+            data.push(rowData);
         });
 
-        // 엑셀 변환
+        data.push(["", "총합계", total.toLocaleString() + "원", ""]);
+
         const ws = XLSX.utils.aoa_to_sheet(data);
         const wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "입출금내역");
-        XLSX.writeFile(wb, "입출금_누적합포함.xlsx");
+        XLSX.utils.book_append_sheet(wb, ws, "지출내역");
+        XLSX.writeFile(wb, "지출내역_합계포함.xlsx");
     }
 </script>
 

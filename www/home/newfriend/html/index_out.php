@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>대구동부교회 바울 새가족부 메인</title>
+    <title>대구동부교회 바울 새가족부 지출내역 작성</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitment/0.0.3/default.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- 달력 스타일 -->
@@ -288,13 +288,17 @@ $today = date("Y-m-d");
                 },
                 success: function(res){
                     alert("지출내역이 저장되었습니다.");
-                    // resetInputs(); // 성공 시 폼 초기화
+                    resetInputs(); // 성공 시 폼 초기화
                 },
                 error: function(err){
                     alert("저장 실패: " + err.responseText);
                 }
             });
         })
+
+        function resetInputs() {
+            window.location.href = './index_out.php';
+        }
 
 
     </script>

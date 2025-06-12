@@ -20,7 +20,7 @@
 }
 
 .content.style_1{
-    padding: 15px;
+    padding: 15px 15px 36px;
 }
 
 .a_right{
@@ -89,4 +89,49 @@
 .list_cell .date_wrap .date.o_reward{
     margin-left: 6px;
     background-color: var(--main_color_dark);
+}
+
+.all_history .list_row .list_cell{
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.all_history .list_row .list_cell .text{
+    font-size: 15px;
+}
+
+.all_history .list_row .list_cell .desc_wrap{
+    display: none;
+}
+
+.all_history .list_row .list_cell:active .desc_wrap{
+    display: block;
+}
+
+.all_history .list_cell .date_wrap{
+    padding-bottom: 0px;
+}
+
+.all_history .list_cell .date_wrap .date{
+    padding: 0;
+    letter-spacing: 0.2px;
+    color: #999;
+    background: none;
+    border-radius: 0;
+}
+
+.all_history .list_cell .amount_wrap .amount{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.all_history .amount_box{
+    text-align: right;
+}
+
+.all_history .amount_box.balance_wrap span{
+    color: #999;
+    font-size: 14px;
 }
