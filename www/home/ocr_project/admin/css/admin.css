@@ -1,0 +1,79 @@
+/* Admin 스타일 */
+.wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+.content {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.content_title_wrap {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content_title_wrap .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.object_list {
+    margin-bottom: 30px;
+}
+
+.object_list .object {
+    margin-bottom: 20px;
+}
+
+.object_list .object .key {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.object_list .object .input input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.object_list .object .input input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn_basic {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn_basic:hover {
+    background-color: #0056b3;
+}
+
+#message p {
+    margin: 0;
+    padding: 10px;
+    border-radius: 5px;
+} 
