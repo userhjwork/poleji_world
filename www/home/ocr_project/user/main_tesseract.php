@@ -245,7 +245,6 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
             
             .ocr-section {
                 padding: 25px;
-                
             }
             
             .file-upload-area {
