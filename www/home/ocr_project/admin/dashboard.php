@@ -111,6 +111,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                 <a href="../user/register.php" class="menu-item">사용자 회원가입 페이지</a>
                 <a href="register.php" class="menu-item">관리자 회원가입</a>
                 <a href="setup.php" class="menu-item">시스템 설정</a>
+                <a href="setup_approval.php" class="menu-item">OCR 승인 시스템 설정</a>
+                <a href="ocr_approval.php" class="menu-item">OCR 승인 관리</a>
             </div>
             
             <div class="stats">
