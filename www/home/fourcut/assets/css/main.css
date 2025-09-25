@@ -1,0 +1,607 @@
+/* common */
+body span{
+    font-size: 1rem;
+}
+/* common end */
+
+
+
+/* main project category */
+.wrap{
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+}
+
+.wrap .main_wrap{
+    position: fixed;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+/* common */
+/* button style */
+.btn_basic{
+    padding: 5px 15px;
+    font-weight: 600;
+    color: #333;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.btn_basic.warning{
+    color: #fff;
+    background-color: #690000;
+}
+/* button style end */
+
+
+.fixed_btn{
+    position: fixed;
+    z-index: 2;
+}
+/* common end */
+
+#logo{
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 1;
+}
+
+.restored_map #logo .img_wrap{
+    padding: 7px 10px 3px;
+    width: 15vw;
+    max-width: 180px;
+    min-width: 120px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#logo .img_wrap{
+    padding: 7px 10px 3px;
+    width: 15vw;
+    max-width: 560px;
+    min-width: 280px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+
+/* 지도 옵션 */
+.option_wrap{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+/* 날씨 */
+.restored_map .option_wrap .weather_info span{
+    font-size: 1rem;
+}
+
+.restored_map .option_wrap .weather_info{
+    width: 100vw;
+    background-color: rgba(255,255,255,.8);
+    padding: 10px 16px;
+}
+
+.restored_map .option_wrap .weather_info .title_wrap{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.restored_map .option_wrap .weather_info .title_wrap .title{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #000;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap{
+    flex-wrap: wrap;
+    padding-top: 6px;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap,
+.restored_map .option_wrap .weather_info .con_wrap li{
+    display: flex;
+    align-items: center;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap li:not(:last-child){
+    padding: 5px 15px 5px 0;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap .icon{
+    display: flex;
+    align-items: center;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap .icon:before{
+    content: '';
+    display: block;
+    margin-right: 5px;
+    width: 22px;
+    height: 22px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap .icon{
+    color: #000;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap .icon.temp,
+.restored_map .option_wrap .weather_info .con_wrap .icon.temp + .unit{
+    color: #690000;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap .icon.rain,
+.restored_map .option_wrap .weather_info .con_wrap .icon.rain + .unit{
+    color: #1972db;
+}
+
+.restored_map .option_wrap .weather_info .con_wrap .icon.temp:before{
+    width: 10px;
+    background-image: url('../img/icon_temperature.svg');
+}
+.restored_map .option_wrap .weather_info .con_wrap .icon.rain:before{
+    background-image: url('../img/icon_drop.svg');
+}
+.restored_map .option_wrap .weather_info .con_wrap .icon.dirc:before{
+    background-image: url('../img/icon_dirc.svg');
+}
+.restored_map .option_wrap .weather_info .con_wrap .icon.wind:before{
+    background-image: url('../img/icon_wind.svg');
+}
+.restored_map .option_wrap .weather_info .con_wrap .icon.speed:before{
+    background-image: url('../img/icon_speed.svg');
+}
+/* 날씨 end */
+
+/* 날씨 */
+.option_wrap .weather_info span{
+    font-size: 3rem;
+}
+
+.option_wrap .weather_info{
+    width: 100vw;
+    background-color: rgba(255,255,255,.8);
+    padding: 30px 45px;
+}
+
+.option_wrap .weather_info .title_wrap{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.option_wrap .weather_info .title_wrap .title{
+    font-size: 45px;
+    line-height: 60px;
+    font-weight: 600;
+    color: #000;
+}
+
+.option_wrap .weather_info .con_wrap{
+    flex-wrap: wrap;
+    padding-top: 6px;
+}
+
+.option_wrap .weather_info .con_wrap,
+.option_wrap .weather_info .con_wrap li{
+    display: flex;
+    align-items: center;
+}
+
+.option_wrap .weather_info .con_wrap li:not(:last-child){
+    padding: 5px 30px 5px 0;
+}
+
+.option_wrap .weather_info .con_wrap .icon{
+    display: flex;
+    align-items: center;
+}
+
+.option_wrap .weather_info .con_wrap .icon:before{
+    content: '';
+    display: block;
+    margin-right: 5px;
+    width: 45px;
+    height: 45px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.option_wrap .weather_info .con_wrap .icon{
+    color: #000;
+}
+
+.option_wrap .weather_info .con_wrap .icon.temp,
+.option_wrap .weather_info .con_wrap .icon.temp + .unit{
+    color: #690000;
+}
+
+.option_wrap .weather_info .con_wrap .icon.rain,
+.option_wrap .weather_info .con_wrap .icon.rain + .unit{
+    color: #1972db;
+}
+
+.option_wrap .weather_info .con_wrap .icon.temp:before{
+    width: 34px;
+    background-image: url('../img/icon_temperature.svg');
+}
+.option_wrap .weather_info .con_wrap .icon.rain:before{
+    background-image: url('../img/icon_drop.svg');
+}
+.option_wrap .weather_info .con_wrap .icon.dirc:before{
+    background-image: url('../img/icon_dirc.svg');
+}
+.option_wrap .weather_info .con_wrap .icon.wind:before{
+    background-image: url('../img/icon_wind.svg');
+}
+.option_wrap .weather_info .con_wrap .icon.speed:before{
+    background-image: url('../img/icon_speed.svg');
+}
+/* 날씨 end */
+
+
+
+
+/* 지도 옵션 end */
+.restored_map #report_stink{
+    left: 15px;
+    bottom: 20px;
+    font-size: 16px;
+}
+
+#report_stink{
+    left: 15px;
+    bottom: 20px;
+    font-size: 38px;
+}
+
+
+
+.fixed_icon .icon{
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-color: #ddd;
+    border: 3px solid #fff;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, .4), 0 0 8px rgba(0, 0, 0, .4);
+    border-radius: 50%;
+}
+
+.fixed_icon .icon.perfect{
+    background-color: #345dbb;
+}
+.fixed_icon .icon.good{
+    background-color: #88cf3b;
+}
+.fixed_icon .icon.soso{
+    background-color: #c9cb3f;
+}
+.fixed_icon .icon.bad{
+    background-color: #cb863f;
+}
+.fixed_icon .icon.trash{
+    background-color: #cb3f3f;
+}
+
+.fixed_icon .icon .icon_text{
+    position: relative;
+    color: #fff;
+    z-index: 1;
+}
+
+/* main project category end */
+
+
+
+/* #oms_1{
+    position: fixed;
+    top: 30vh;
+    left: 50vw;
+}
+#oms_2{
+    position: fixed;
+    top: 52vh;
+    left: 62vw;
+}
+#oms_3{
+    position: fixed;
+    top: 80vh;
+    left: 70vw;
+}
+#oms_4{
+    position: fixed;
+    top: 90vh;
+    left: 48vw;
+}
+#oms_5{
+    position: fixed;
+    top: 54vh;
+    left: 35vw;
+} */
+
+
+
+
+#map,#estoreMap{
+    position:relative;
+    width:100vw;
+    height:100vh;
+}
+
+.control-btn {
+    margin: 0;
+    color: #555;
+    padding: 2px 6px;
+    background: #fff;
+    border: solid 1px #333;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    outline: 0 none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.5) !important;
+}
+.control-on {
+    background-color: #2780E3;
+    color: #FFF;
+}
+
+#wrap > h2 {
+    display: none;
+}
+#wrap > a.back {
+    display: none;
+}
+#wrap2 > h2 {
+    display: none;
+}
+#wrap2 > a.back {
+    display: none;
+}
+
+/* HTML Marker */
+
+
+/* pstn_info_wrap */
+.pstn_info_wrap{
+    position: absolute;
+    /* top: 50%;
+    left: calc(100% + 15px); */
+    width: 195px;
+    /* transform: translateY(-50%); */
+}
+
+#oms_4 .pstn_info_wrap,
+#oms_5 .pstn_info_wrap{
+    left: auto;
+    /* right: calc(100% + 15px); */
+}
+
+#oms_4 .pstn_info_wrap{
+    /* top: 0; */
+}
+
+.pstn_info_wrap .pstn_info{
+    position: relative;
+    background-color: rgba(45, 45, 45, 0.9);
+    border: 2px solid #fff;
+    z-index: 999;
+}
+
+.pstn_info_wrap .pstn_info *,
+.stinking_time *{
+    color: #fff;
+}
+
+.pstn_info_wrap .pstn_info h5.title{
+    padding: 5px 0 10px;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    color: #fff000;
+}
+
+.pstn_info_wrap .pstn_info .pstn_list li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 4px 0px 6px;
+    width: 100%;
+    
+}
+
+.pstn_info_wrap .pstn_info .pstn_list li:not(:last-child){
+    border-bottom: 1px solid #fff;
+}
+
+.pstn_info_wrap .pstn_info .pstn_list li span{
+    font-weight: 800;
+}
+
+.pstn_info_wrap .pstn_info .pstn_list li:first-child .con_wrap{
+    display: flex;
+    flex-grow: 1;
+}
+
+.pstn_info_wrap .pstn_info .pstn_list li:first-child .con_wrap .con_value{
+    flex-grow: 1;
+    display: block;
+    text-align: center;
+    font-size: 27px;
+    line-height: 15px;
+    
+}
+
+#restored{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 5;
+    border: 2px solid #ff0000;
+    background-color: #ff0000;
+    color: #fff;
+}
+
+
+/* pstn_info_wrap end */
+
+.stinking_time{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 3px 0 7px;
+}
+
+.stinking_time .icon{
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: #000;
+    background: radial-gradient(circle, rgba(250,250,250,1) 0%, rgba(152,152,152,1) 11%, rgba(82,82,82,1) 26%, rgba(0,0,0,1) 61%, rgba(0,0,0,1) 79%, rgba(93,93,93,1) 100%);
+    
+}
+
+.stinking_time.time_over .icon{
+    background: #ff0000;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,225,225,1) 4%, rgba(252,47,47,1) 22%, rgba(179,0,0,1) 42%, rgba(128,2,2,1) 77%, rgba(78,0,0,1) 88%, rgba(111,0,0,1) 100%);
+}
+
+.stinking_time .icon.ball {
+    perspective: 60px;
+}
+
+.wrapsss{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.d_flow{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #cdcdcd;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    
+}
+
+.d_flow.active{
+    background-color: #797979;
+}
+
+.d_flow .img_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 7px 7px;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform: rotate(0deg);
+}
+
+.d_flow.top .img_wrap{
+    transform: rotate(0deg);
+}
+.d_flow.rt .img_wrap{
+    transform: rotate(90deg);
+}
+.d_flow.btm .img_wrap{
+    transform: rotate(180deg);
+}
+.d_flow.lt .img_wrap{
+    transform: rotate(27deg);
+}
+
+.d_flow .flow_num{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0;
+    justify-content: center;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-weight: 800;
+    
+}
+
+.d_stop{
+    display: inline-block;
+    padding: 5px 10px 3px;
+    background-color: #000;
+}
+
+.d_stop .text{
+    color: #fff;
+}
+
+
+@media screen and ( max-width: 767px ) {
+    
+}
+
+
+@media screen and ( max-width: 320px ) {
+    html{
+        font-size: 14px;
+    }
+
+    .fixed_icon{
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+
+    .fixed_icon .icon{
+        position: relative;
+        width: 24px;
+        height: 24px;
+        z-index: 1;
+    }
+
+    .fixed_icon .icon .icon_text{
+        position: absolute;
+        display: block;
+        padding: 3px 14px 0;
+        top: 50%;
+        left: calc(20px + 6px);
+        height: calc(100% + 6px);
+        width: max-content;
+        transform: translateY(-50%);
+        background-color: #fff;
+        border-radius: 12px;
+        color: #3f3f3f;
+    }
+
+
+    .pstn_info_wrap{
+        position: relative;
+        width: 170px;
+    }
+}

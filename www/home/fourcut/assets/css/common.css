@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-:root {
-    --main_color: #009969;
-    --main_color_dark: #007d56;
-    --main_color_bgL: #eafbf6;
-}
+
 
 /* common */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -173,78 +169,3 @@ code {
     background-color: #f2f2f2;
 }
 /* main project category end */
-
-/* ====== 공통 버튼, 메시지, 폼 스타일 ====== */
-.btn {
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-right: 10px;
-}
-.btn-primary {
-    background: #007bff;
-    color: white;
-}
-.btn-primary:hover {
-    background: #0056b3;
-}
-.btn-success {
-    background: #28a745;
-    color: white;
-}
-.btn-success:hover {
-    background: #218838;
-}
-.btn-danger {
-    background: #dc3545;
-    color: white;
-}
-.btn-danger:hover {
-    background: #c82333;
-}
-.form-group {
-    margin-bottom: 20px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-.form-control {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-.body input[type="text"]{
-    padding: 10px;
-}
-.form-control:focus {
-    border-color: #007bff;
-    outline: none;
-}
-textarea.form-control {
-    min-height: 100px;
-    resize: vertical;
-}
-.message {
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-.message.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-.message.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}

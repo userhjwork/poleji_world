@@ -6,7 +6,8 @@
     <title>방탈출 힌트 시스템</title>
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/normalize.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/common.css">
-    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/main.css"> 
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/main.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/index_main.css">
     
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/newescape/assets/js/script.js"></script>
@@ -17,129 +18,6 @@ error_reporting(E_ALL);
 
 include('./php/connect_db.php');
 ?>
-
-<style>
-.hint-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.hint-input-section {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.hint-input-section h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.hint-number-input {
-    width: 200px;
-    padding: 15px;
-    font-size: 18px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    margin-right: 10px;
-}
-
-.hint-btn {
-    padding: 15px 30px;
-    font-size: 16px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.hint-btn:hover {
-    background: #0056b3;
-}
-
-.hint-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-.hint-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    display: none;
-}
-
-.hint-text {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.hint-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.answer-btn {
-    padding: 12px 25px;
-    font-size: 14px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.answer-btn:hover {
-    background: #218838;
-}
-
-.answer-content {
-    background: #e8f5e8;
-    padding: 25px;
-    border-radius: 8px;
-    margin-top: 20px;
-    display: none;
-}
-
-.answer-text {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #155724;
-    margin-bottom: 15px;
-}
-
-.answer-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-}
-
-.error-message {
-    color: #dc3545;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.success-message {
-    color: #28a745;
-    font-size: 16px;
-    margin-top: 10px;
-}
-</style>
 </head>
 <body>
     <div class="wrap">
@@ -150,8 +28,10 @@ include('./php/connect_db.php');
                 <div class="hint-container">
                     <div class="hint-input-section">
                         <h2>방탈출 힌트 시스템</h2>
-                        <div>
-                            <input type="text" id="hintNumber" class="hint-number-input" placeholder="힌트 번호 입력" maxlength="10">
+                        <div class="flex">
+                            <div class="input_wrap">
+                                <input type="text" id="hintNumber" class="hint-number-input" placeholder="힌트 번호 입력" maxlength="10">
+                            </div>
                             <button id="getHintBtn" class="hint-btn">힌트 보기</button>
                         </div>
                         <div id="message"></div>

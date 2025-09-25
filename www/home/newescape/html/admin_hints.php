@@ -6,7 +6,8 @@
     <title>힌트 관리 시스템</title>
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/normalize.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/common.css">
-    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/main.css"> 
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/main.css">
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/admin_hints.css">
     
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/newescape/assets/js/script.js"></script>
@@ -17,191 +18,6 @@ error_reporting(E_ALL);
 
 include('./php/connect_db.php');
 ?>
-
-<style>
-.admin-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.admin-header {
-    background: #343a40;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.admin-header h1 {
-    margin: 0;
-    font-size: 28px;
-}
-
-.hint-form {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.form-control {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.form-control:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-textarea.form-control {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.btn {
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-right: 10px;
-}
-
-.btn-primary {
-    background: #007bff;
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #0056b3;
-}
-
-.btn-success {
-    background: #28a745;
-    color: white;
-}
-
-.btn-success:hover {
-    background: #218838;
-}
-
-.btn-danger {
-    background: #dc3545;
-    color: white;
-}
-
-.btn-danger:hover {
-    background: #c82333;
-}
-
-.hint-list {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.hint-item {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.hint-item:last-child {
-    border-bottom: none;
-}
-
-.hint-info {
-    flex: 1;
-}
-
-.hint-number {
-    font-weight: bold;
-    color: #007bff;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.hint-text {
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.hint-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.message {
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.message.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.message.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: #000;
-}
-</style>
 </head>
 <body>
     <div class="wrap">
@@ -230,7 +46,9 @@ textarea.form-control {
                             </div>
                             <div class="form-group">
                                 <label for="hintImage">힌트 이미지</label>
-                                <input type="file" id="hintImage" name="hintImage" class="form-control" accept="image/*">
+                                <label for="hintImage" class="custom-file-label">이미지 선택</label>
+                                <input type="file" id="hintImage" name="hintImage" class="form-control custom-file-input" accept="image/*" style="display:none;">
+                                <img id="hintImagePreview" src="#" alt="힌트 이미지 미리보기" style="display:none; max-width:150px; margin-top:10px;" />
                             </div>
                             <div class="form-group">
                                 <label for="answerText">정답 텍스트 *</label>
@@ -238,7 +56,9 @@ textarea.form-control {
                             </div>
                             <div class="form-group">
                                 <label for="answerImage">정답 이미지</label>
-                                <input type="file" id="answerImage" name="answerImage" class="form-control" accept="image/*">
+                                <label for="answerImage" class="custom-file-label">이미지 선택</label>
+                                <input type="file" id="answerImage" name="answerImage" class="form-control custom-file-input" accept="image/*" style="display:none;">
+                                <img id="answerImagePreview" src="#" alt="정답 이미지 미리보기" style="display:none; max-width:150px; margin-top:10px;" />
                             </div>
                             <button type="submit" class="btn btn-primary">힌트 저장</button>
                             <button type="button" class="btn btn-success" onclick="loadHints()">목록 새로고침</button>
@@ -275,7 +95,9 @@ textarea.form-control {
                 </div>
                 <div class="form-group">
                     <label for="editHintImage">힌트 이미지</label>
-                    <input type="file" id="editHintImage" name="hintImage" class="form-control" accept="image/*">
+                    <label for="editHintImage" class="custom-file-label">이미지 선택</label>
+                    <input type="file" id="editHintImage" name="hintImage" class="form-control custom-file-input" accept="image/*" style="display:none;">
+                    <img id="editHintImagePreview" src="#" alt="힌트 이미지 미리보기" style="display:none; max-width:150px; margin-top:10px;" />
                 </div>
                 <div class="form-group">
                     <label for="editAnswerText">정답 텍스트 *</label>
@@ -283,7 +105,9 @@ textarea.form-control {
                 </div>
                 <div class="form-group">
                     <label for="editAnswerImage">정답 이미지</label>
-                    <input type="file" id="editAnswerImage" name="answerImage" class="form-control" accept="image/*">
+                    <label for="editAnswerImage" class="custom-file-label">이미지 선택</label>
+                    <input type="file" id="editAnswerImage" name="answerImage" class="form-control custom-file-input" accept="image/*" style="display:none;">
+                    <img id="editAnswerImagePreview" src="#" alt="정답 이미지 미리보기" style="display:none; max-width:150px; margin-top:10px;" />
                 </div>
                 <button type="submit" class="btn btn-primary">수정 완료</button>
             </form>
@@ -368,6 +192,117 @@ textarea.form-control {
                     $('#editModal').hide();
                 }
             });
+
+            // 이미지 미리보기 함수
+            function readURL(input, previewId) {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $(previewId).attr('src', e.target.result).show();
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    $(previewId).hide();
+                }
+            }
+
+            $('#hintImage').change(function() {
+                readURL(this, '#hintImagePreview');
+            });
+            $('#answerImage').change(function() {
+                readURL(this, '#answerImagePreview');
+            });
+            $('#editHintImage').change(function() {
+                readURL(this, '#editHintImagePreview');
+            });
+            $('#editAnswerImage').change(function() {
+                readURL(this, '#editAnswerImagePreview');
+            });
+
+            // 수정 모달 열 때 기존 이미지 미리보기 표시
+            function showEditImagePreviews(hint) {
+                if (hint.hint_image) {
+                    $('#editHintImagePreview').attr('src', hint.hint_image).show();
+                } else {
+                    $('#editHintImagePreview').hide();
+                }
+                if (hint.answer_image) {
+                    $('#editAnswerImagePreview').attr('src', hint.answer_image).show();
+                } else {
+                    $('#editAnswerImagePreview').hide();
+                }
+            }
+
+            function editHint(id) {
+                $.ajax({
+                    url: './php/get_hint_by_id.php',
+                    type: 'GET',
+                    data: { id: id },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            const hint = response.hint;
+                            $('#editId').val(hint.id);
+                            $('#editHintNumber').val(hint.hint_number);
+                            $('#editHintText').val(hint.hint_text);
+                            $('#editHintImage').val(''); // 파일 input은 값 세팅 불가
+                            $('#editAnswerText').val(hint.answer_text);
+                            $('#editAnswerImage').val('');
+                            showEditImagePreviews(hint);
+                            $('#editModal').show();
+                        } else {
+                            showMessage('힌트 정보를 불러오는데 실패했습니다.', 'error');
+                        }
+                    },
+                    error: function() {
+                        showMessage('서버 오류가 발생했습니다.', 'error');
+                    }
+                });
+            }
+
+            function deleteHint(id) {
+                if (confirm('정말로 이 힌트를 삭제하시겠습니까?')) {
+                    $.ajax({
+                        url: './php/delete_hint.php',
+                        type: 'POST',
+                        data: { id: id },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                showMessage('힌트가 성공적으로 삭제되었습니다.', 'success');
+                                loadHints();
+                            } else {
+                                showMessage(response.error || '삭제에 실패했습니다.', 'error');
+                            }
+                        },
+                        error: function() {
+                            showMessage('서버 오류가 발생했습니다.', 'error');
+                        }
+                    });
+                }
+            }
+
+            function showMessage(message, type) {
+                const messageDiv = $('#message');
+                messageDiv.removeClass('message success error')
+                         .addClass(`message ${type}`)
+                         .text(message);
+                
+                setTimeout(function() {
+                    messageDiv.text('').removeClass('message success error');
+                }, 3000);
+            }
+
+            // 커스텀 파일 선택 버튼 동작
+            $('.custom-file-input').on('change', function() {
+                var fileName = $(this).val().split('\\').pop();
+                var label = $(this).siblings('.custom-file-label');
+                if (fileName) {
+                    label.text(fileName).addClass('selected');
+                } else {
+                    label.text('이미지 선택').removeClass('selected');
+                }
+            });
         });
 
         function loadHints() {
@@ -409,65 +344,6 @@ textarea.form-control {
                 });
             }
             $('#hintList').html(html);
-        }
-
-        function editHint(id) {
-            $.ajax({
-                url: './php/get_hint_by_id.php',
-                type: 'GET',
-                data: { id: id },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        const hint = response.hint;
-                        $('#editId').val(hint.id);
-                        $('#editHintNumber').val(hint.hint_number);
-                        $('#editHintText').val(hint.hint_text);
-                        $('#editHintImage').val(hint.hint_image);
-                        $('#editAnswerText').val(hint.answer_text);
-                        $('#editAnswerImage').val(hint.answer_image);
-                        $('#editModal').show();
-                    } else {
-                        showMessage('힌트 정보를 불러오는데 실패했습니다.', 'error');
-                    }
-                },
-                error: function() {
-                    showMessage('서버 오류가 발생했습니다.', 'error');
-                }
-            });
-        }
-
-        function deleteHint(id) {
-            if (confirm('정말로 이 힌트를 삭제하시겠습니까?')) {
-                $.ajax({
-                    url: './php/delete_hint.php',
-                    type: 'POST',
-                    data: { id: id },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
-                            showMessage('힌트가 성공적으로 삭제되었습니다.', 'success');
-                            loadHints();
-                        } else {
-                            showMessage(response.error || '삭제에 실패했습니다.', 'error');
-                        }
-                    },
-                    error: function() {
-                        showMessage('서버 오류가 발생했습니다.', 'error');
-                    }
-                });
-            }
-        }
-
-        function showMessage(message, type) {
-            const messageDiv = $('#message');
-            messageDiv.removeClass('message success error')
-                     .addClass(`message ${type}`)
-                     .text(message);
-            
-            setTimeout(function() {
-                messageDiv.text('').removeClass('message success error');
-            }, 3000);
         }
     </script>
 </body>

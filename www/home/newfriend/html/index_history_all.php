@@ -83,25 +83,39 @@ if ($conn->multi_query($sql)) {
         $list_html .= "    </button>";
         $list_html .= "</li>";
     }
+
 } else {
     $list_html = "<li class='list_row'>지출내역이 없습니다.</li>";
 }
 ?>
 
 <div class="wrap">
-    <div class="header"></div>
     <div class="body">
-        <div class="search_wrap"></div>
-        <div class="content style_1">
+        <div class="content style_1 header">
             <div class="title_wrap">
                 <h2 class="title">전체 내역 리스트</h2>
                 <div class="btn_wrap">
                     <button type="button" id="btn_table" class="btn_basic"><span class="text">테이블형식 보기</span></button>
                     <button type="button" id="btn_excel" class="btn_basic"><span class="text">엑셀로 저장</span></button>
                 </div>
+                <div class="search_wrap">
+                    
+                    <div class="search_date">
+                        <div class="input_wrap">
+                            <input type="text" name="search_date" id="search_date" placeholder="날짜를 입력해주세요.">
+                        </div>
+                    </div>
+                    <div class="search_text">
+                        <div class="input_wrap">
+                            <input type="text" name="search_input" id="search_input" placeholder="검색어를 입력해주세요.">
+                        </div>
+                    </div>
+                </div>
+                \
             </div>
             <div class="all_history">
                 <ul class="list_basic">
+                    
                     <?= $list_html ?>
                 </ul>
             </div>

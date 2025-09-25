@@ -1,0 +1,106 @@
+/* admin_hints.php 전용 스타일 */
+.admin-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.admin-header {
+    background: #343a40;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.admin-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+.hint-form {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.hint-list {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.hint-item {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hint-item:last-child {
+    border-bottom: none;
+}
+.hint-info {
+    flex: 1;
+}
+.hint-number {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.hint-text {
+    color: #666;
+    margin-bottom: 5px;
+}
+.hint-actions {
+    display: flex;
+    gap: 10px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 커스텀 파일 선택 버튼 */
+.custom-file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: background 0.2s;
+}
+.custom-file-label:hover {
+    background: #0056b3;
+}
+
+/* 선택된 파일명 표시용 */
+.custom-file-label.selected {
+    background: #28a745;
+    color: #fff;
+} 

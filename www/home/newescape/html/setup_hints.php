@@ -7,98 +7,10 @@
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/normalize.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/common.css">
     <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/main.css"> 
+    <link rel="stylesheet" href="https://poleji.cafe24.com/home/newescape/assets/css/setup_hints.css">
     
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://poleji.cafe24.com/home/newescape/assets/js/script.js"></script>
-
-<style>
-.setup-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.setup-header {
-    background: #28a745;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.setup-header h1 {
-    margin: 0;
-    font-size: 28px;
-}
-
-.setup-content {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.setup-btn {
-    padding: 15px 30px;
-    font-size: 18px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin: 10px;
-}
-
-.setup-btn:hover {
-    background: #0056b3;
-}
-
-.setup-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-.result {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-.result.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.result.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.nav-links {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.nav-links a {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    background: #6c757d;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.3s;
-}
-
-.nav-links a:hover {
-    background: #545b62;
-}
-</style>
 </head>
 <body>
     <div class="wrap">
